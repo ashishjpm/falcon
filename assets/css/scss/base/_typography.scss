@@ -1,0 +1,50 @@
+@import "_colors";
+
+// Function for Font-Size
+@function fontSize($fontsize) {
+  @return 16px + $fontsize;
+}
+
+// Function for Font-Opacity
+@function fontOpacity($opacity) {
+  @return $opacity / 100;
+}
+
+// Font weight variables
+$light: 300;
+$normal: 400;
+$semibold: 500;
+$bold: 700;
+
+@mixin base-font{
+	font-family: 'Roboto', sans-serif;
+	color: $black;
+}
+
+@mixin font-light($fontSize, $fontOpacity) {
+    @include base-font;
+	font-weight: $light;
+	font-size: fontSize($fontSize);
+	opacity: fontOpacity($fontOpacity);
+}
+
+@mixin font-normal($fontSize, $fontOpacity) {
+    @include base-font;
+	font-weight: $normal;
+	font-size: fontSize($fontSize);
+	opacity: fontOpacity($fontOpacity);
+}
+
+@mixin font-semibold($fontSize, $fontOpacity) {
+    @include base-font;
+	font-weight: $semibold;
+	font-size: fontSize($fontSize);
+	opacity: fontOpacity($fontOpacity);
+}
+
+@mixin font-bold($fontSize, $fontOpacity) {
+    @include base-font;
+	font-weight: $bold;
+	font-size: fontSize($fontSize);
+	opacity: fontOpacity($fontOpacity);
+}

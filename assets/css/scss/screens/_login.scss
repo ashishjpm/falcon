@@ -1,0 +1,112 @@
+.login{
+	.falcon-logo{
+		display: block;
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 3%;
+    width: 40px;
+    height: 40px;
+    background-image: url(/assets/images/f_logo.jpeg);
+    background-size: 100%;
+    border-radius: 5px;
+    @include respond-to(wide-screens) {
+	    width: 60px;
+	    height: 60px;
+    }
+	}
+	.enterprise-panel-photo{
+		background: url(/assets/images/enterprise-panel-photo.jpg);
+    background-size: cover;
+    text-align: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 460px;
+    min-height: 600px;
+    height: 100%;
+    overflow: hidden;
+	  @include respond-to(wide-screens) { width: 550px; }
+    .enterprise-panel__content{
+			padding: 0 55px;
+			margin-top: 180px;
+			@include respond-to(wide-screens) { 
+				padding: 0 75px;
+				margin-top: 60%;
+			}
+			.enterprise-panel__header{
+		    margin-bottom: 33px;
+			  opacity: .89;
+			  font-weight: 600;
+			  font-size: 20px;
+			  color: $white;
+			  letter-spacing: 1.42px;
+			  text-transform: uppercase;
+			  .enterprise-panel__subheader{
+	  	    display: block;
+			    margin-bottom: 17px;
+			    font-size: 12px;
+			    color: #FFF;
+			    letter-spacing: 1.09px;
+			  }
+			}
+			.enterprise-panel__caption{
+		    margin-bottom: 35px;
+		    opacity: .69;
+		    font-style: italic;
+		    font-size: 15px;
+		    color: #FFF;
+		    line-height: 25px;
+			}
+    }
+    .enterprise-footer{
+	    position: absolute;
+	    bottom: 40px;
+	    left: 55px;
+	    right: 55px;
+    }
+	}
+	.login-form-wpr{
+    margin-left: 460px;
+    @include respond-to(wide-screens) { margin-left: 550px; }
+		.new-user{
+	    padding: 40px 50px 40px 0;
+    	text-align: right;
+		}
+		.login-form{
+			width: 70%;
+			margin: auto;
+			.login-title{
+		    @include font-normal(12,100);
+		    margin-bottom: 50px;
+        color: #434C5F;	
+		    small{
+		    	display: block;
+		    	margin-top: 10px;
+			    @include font-light(0,100);
+			    color: #596377;
+		    }
+			}
+			.group{
+		    position: relative;
+    		margin-bottom: 23px;
+    		label{
+    			display: block;
+			    @include font-bold(-5,100);
+			    color: #434C5E;
+			    margin-bottom: 8px;
+    		}
+			}
+		}
+		.social-login{
+		}
+	}
+}

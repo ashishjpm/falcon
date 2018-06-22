@@ -1,0 +1,59 @@
+.admin-contest-attempt{
+	margin: -50px 0;
+	height: calc(100vh - 150px);
+	.sidebar{
+		width: 25%;
+		display: inline-block;
+		border-right: 1px solid;
+		height: calc(100vh - 150px);
+		overflow-y: auto;
+		float: left;
+		.question-list{
+			padding: 20px 15px 15px 30px;
+			cursor: pointer;
+		    overflow: hidden;
+		    text-overflow: ellipsis;
+		    white-space: nowrap;
+		    display: inline-block;
+		    width: 95%;
+			&.active{
+				color: $iv-red;
+				font-weight: 400; 
+			}
+			.question{
+				padding-left: 15px;
+			}
+		}
+	}
+	.content{
+		position: relative;
+		width: 75%;
+		height: calc(100vh - 150px);
+		overflow-y: auto;
+		display: inline-block;
+		.timer{
+			position: absolute;
+			right: 50px;
+			top: 32px;
+			font-size: 20px;
+		}
+		.que-title{
+			margin: 30px;
+			font-size: 30px;
+			margin-right: 20%;
+		}
+		.que-statment{
+			margin: 30px;
+		}
+		.code-editor{
+			margin: 30px;
+			border: 1px solid grey;
+		}
+		.test-case-result{
+			margin: 30px;
+		}
+		.options{
+			margin: 30px;
+		}
+	}
+}

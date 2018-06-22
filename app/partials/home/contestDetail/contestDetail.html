@@ -1,0 +1,15 @@
+<div class="admin-contest-details clearfix">
+	<div class="content">
+		<div class="title">{{contestDetail.details.name}}</div>
+		<div class="title">{{contestDetail.details.description}}</div>
+		<div>Duration : {{contestDetail.details.duration}}</div>
+		<!-- <div>Type : {{contestDetail.details.type}}</div> -->
+	</div>
+	<div class="timings">
+		<div class="title">Starts On</div>
+		<div>{{contestDetail.details.startDate}}</div>
+		<div class="title">Ends On</div>
+		<div>{{contestDetail.details.endDate}}</div>
+		<button class="btn btn-iv-red lg attempt-now" ng-click="attemptContest()">Attempt Now</button>
+	</div>
+</div>

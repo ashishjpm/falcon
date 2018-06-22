@@ -1,0 +1,24 @@
+.admin-contest-details{
+	margin:0 auto;
+	width: 60%;
+	padding: 20px 0;
+	.content{
+		float: left;
+		width: 70%;
+		padding: 0 20px;
+	}
+	.timings{
+		float: left;
+		width: 30%;
+		border-left: 1px solid #d2cfcf;
+		padding: 0 20px;
+		.attempt-now{
+			margin-top: 20px;
+		}
+	}
+	.title{
+		margin-top: 10px;
+	}
+
+
+}

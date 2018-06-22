@@ -1,0 +1,100 @@
+<div class="admin-contest-attempt">
+	<div class="sidebar">
+		<div
+			ng-class="['question-list', {'active': (item.id == contestAttempt.currentQue.id)}]"
+			ng-repeat="item in contestAttempt.queDetails track by $index"
+			ng-click="contestAttempt.updateQue(item, $index)">
+				<span
+					ng-class="['mark',
+						{'correct': contestAttempt.activeQuestion.completed},
+						{'attempted':contestAttempt.activeQuestion.inProgress},
+						{'unAttempted':contestAttempt.activeQuestion.unAttempted}]">
+					<i class="material-icons">done</i>
+				</span>
+				<span class="question">{{item.questionTitle}}</span>
+		</div>
+	</div>
+	<div class="content">
+		<div class="timer">
+			<button class="btn btn-iv-red lg pull-right" ng-click="contestAttempt.finishTest()">Finish</button>
+		</div>
+		<div ng-show="contestAttempt.currentQue.questionType == 'CODING'">
+			<div class="que-title title">
+				{{contestAttempt.currentQue.questionTitle}}
+			</div>
+			<div class="que-statment">
+				{{contestAttempt.currentQue.statement}}
+			</div>
+			<div class="lang-select text-right">
+				<select name="" id="" class="f-select margin-right-30" ng-model="contestAttempt.language">
+					<option ng-repeat="item in contestAttempt.langData" value="{{item.id}}">{{item.name}}</option>
+				</select>
+			</div>
+			<div class="code-editor">
+				<div id="code"></div>
+			</div>
+			<script>
+				var myCodeMirror = CodeMirror(document.getElementById("code"), {
+			    lineNumbers: true,
+			    mode: "htmlmixed"
+			  });
+			</script>
+			<div class="margin-right-30 clearfix" ng-show="!contestAttempt.loader">
+				<button class="btn btn-iv-red lg pull-right margin-left-10" ng-click="submitCode()">Submit</button>
+				<button class="btn btn-grey lg pull-right" ng-click="testCode()">Run Test</button>
+			</div>
+			<div class="test-case-result clearfix">
+				<div class="col-md-2" ng-repeat="item in contestAttempt.testCaseResults track by $index">
+					<span ng-class="['mark', {'correct': item}, {'failed': !item}]">
+						<i ng-if="item" class="material-icons">done</i>
+						<i ng-if="!item" class="material-icons">close</i>
+					</span>
+					<span class="padding-left-10">Test case #{{$index+1}}</span>
+				</div>
+			</div>
+			<div ng-show="contestAttempt.loader">
+				<div class="spinner">
+				  <div class="cube1"></div>
+				  <div class="cube2"></div>
+				</div>
+				<div class="text-center">Compiling...</div>
+			</div>
+		</div>
+		<div ng-show="(contestAttempt.currentQue.questionType == 'SINGLE_CORRECT') || (contestAttempt.currentQue.questionType == 'MULTIPLE_CORRECT')">
+			<div class="que-title title">
+				{{contestAttempt.currentQue.statement}}
+			</div>
+			<div class="options" ng-show="(contestAttempt.currentQue.questionType == 'SINGLE_CORRECT')">
+				<div ng-repeat="item in contestAttempt.currentQue.optionDtos track by $index">
+					<div class="radio">
+						<label>
+							<input
+								type="radio"
+								ng-model="contestAttempt.selectedSCQ[contestAttempt.currentQue.questionId]"
+								ng-value="item.optionId"
+								name="questionType">
+							{{item.value}}
+						</label>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="options" ng-show="(contestAttempt.currentQue.questionType == 'SINGLE_CORRECT')">
+				<div ng-repeat="item in contestAttempt.currentQue.optionDtos track by $index">
+					<div class="checkbox">
+						<label>
+							<input
+								type="checkbox"
+								name="optionsCheckboxes[]"
+								ng-model="asd[$index]">
+							{{item.value}}
+						</label>
+					</div>
+				</div>
+				{{contestAttempt.selectedMCQValues}}
+			</div> -->
+			<div class="margin-right-30 clearfix">
+				<button class="btn btn-iv-red lg pull-right margin-left-10" ng-click="submitOptions()">Submit</button>
+			</div>
+		</div>
+	</div>
+</div>

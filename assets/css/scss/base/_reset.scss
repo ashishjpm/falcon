@@ -1,0 +1,130 @@
+@import "base/_colors";
+@import "base/_typography";
+
+// Material kit reset
+.btn{
+    margin: 0;
+    padding: 5px 0px;
+    width: 60px;
+    font-size: 12px;
+    border-radius: 0px;
+    text-transform: none;
+    box-shadow: none !important;
+    cursor: pointer;
+    &.round{
+        border-radius: 5px !important;
+    }
+    &.disabled{
+        cursor: default;
+    }
+    &.btn-danger{
+        background: $cherry-red;
+    }
+    &.btn-default{
+        background: $light-blue;
+        color: $white !important;
+        &:active, &:focus, &:hover{
+            color: $white !important;
+            background: $light-blue !important;
+        }
+    }
+    &.btn-iv-red{
+        background: $iv-red;
+        color: $white !important;
+        &:active, &:focus, &:hover{
+            color: $white !important;
+            background: $iv-red !important;
+        }
+    }
+    &.btn-success{
+        background: $shamrock;
+    }
+    &.btn-grey{
+        background-image: linear-gradient(to bottom, #f8f8f8, #eeeeee);
+        border: solid 1px $dark-border;
+        color: $font-black;
+        &:active, &:focus{
+            color: $font-black;
+        }
+    }
+    &.btn-white{
+        background: $white;
+        color: $twilight-blue;
+        &:active, &:focus, &:hover{
+            color: $twilight-blue;
+        }
+    }
+
+    &.btn-wire{
+        background: rgba(0,0,0,0);
+        border-radius: 5px;
+        color: $font-black;
+        &.blue{
+            border: solid 1px $cerulean;
+            color: $cerulean;
+        }
+        .ripple{
+            background-color: $white !important;
+        }
+        .ripple-on{
+            background-color: $white !important;
+        }
+    }
+
+    &.btn-plain{
+        background: $white;
+        border: solid 1px $dark-border;
+        color: $font-black;
+        &:active, &:focus{
+            color: $font-black;
+        }
+    }
+    &.auto{
+        width: auto;
+        padding: 3px;
+    }
+    &.sm{
+        width: 50px;
+        padding: 4px 0;
+    }
+    &.md{
+        width: 80px;
+    }
+    &.lg{
+        width: 120px;
+        padding: 8px;
+    }
+    &.xlg{
+        width: 150px;
+        @include font-light(-4,100);
+    }
+    &.xxlg{
+        width: 170px;
+        padding: 7px 0px;
+        @include font-light(-2,100);
+    }
+    &.xxxlg{
+        width: 200px;
+        padding: 12px 0px;
+        @include font-light(2,100);
+    }
+}
+
+.togglebutton{
+    &.success{
+        label input[type=checkbox]:checked + .toggle{
+            background-color: $shamrock;
+            &:after{
+                border-color:: $shamrock;
+            }
+        }
+    }
+    &.danger{
+        label input[type=checkbox]:checked + .toggle{
+            background-color: $cherry-red;
+            &:after{
+                border-color:: $cherry-red;
+            }
+        }
+    }
+}

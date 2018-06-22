@@ -1,0 +1,100 @@
+header{
+	height: 121px;
+	background: $header-background;
+	color: $white;
+	line-height: 120px;
+	width: 100%;
+	position: relative;
+	.add-new{
+		position: absolute;
+		top: 95px;
+		right: 80px;
+		height: 50px;
+		width: 50px;
+		background: $iv-red;
+		border-radius: 50%;
+		cursor: pointer;
+		i{
+	    position: absolute;
+			font-size: 38px;
+			top: 6px;
+			right: 6px;
+		}
+	}
+	.header-logo{
+		display: inline;
+    border-right: 1px solid $modal-mask;
+    height: 50px;
+    padding: 10px 0;
+    margin-right: 20px;
+    img{
+    	height: 40px;
+	    width: 40px;
+      margin: 0px 20px 0 35px;
+	    border-radius: 5px;
+    }
+	}
+	.task-select{
+		position: absolute;
+		.task-dropdown{
+		    display: none;
+		    color: black;
+		    line-height: 25px;
+		    top: -32px;
+		    position: relative;
+		    padding: 10px 0;
+		    background: white;
+		    border: 1px solid #202633;
+		    div{
+		    	padding:6px 10px;
+		    	color: #888;
+		    	cursor: pointer;
+		    	font-weight: 400;
+		    	@extend %transition-md;
+		    	&:hover{
+		    		color: $black;
+		    		font-weight: 400;
+		    		@extend %transition-md;
+		    	}
+		    }
+		}
+		.task-title{
+			cursor: pointer;
+	    	@include font-light(12,100);
+	    	color: $light-font;
+			@extend %transition-fast;
+			&:hover{
+				color: $white;
+				@extend %transition-md;
+			}
+	    	position: relative;
+	    	top: 4px;
+		}
+	    i{
+		    position: relative;
+		    top: 7px;
+		    left: 10px;
+	    }
+	    &.admin-tab{
+			&:hover .task-dropdown{
+	            @extend %transition-md;
+	            display: block;
+	        }
+		}
+	}
+}
+
+section{
+	min-height: calc(100vh - 150px);
+	padding: 50px 0;
+	background: $body-background;
+}
+
+footer{
+	height: 30px;
+	line-height: 30px;
+	padding: 0px 30px;
+	background: $body-background;
+	text-align: right;
+	font-size: 12px;
+}

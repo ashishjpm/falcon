@@ -1,0 +1,37 @@
+<div class="question-details">
+	<div class="back-to-list">
+		<i ng-click="adminQuestionDetails.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Problem Statement</span>
+	</div>
+	<div class="question-title">
+		<div class="statement">The code stubs in your editor declare a Solution class and a main method. Complete the main method by copying the two lines of code below and pasting them inside the body of your main method.</div>
+	</div>
+	<div class="question-type">
+		<span class="title">Type</span> : {{adminQuestionDetails.type}}
+	</div>
+	<div class="question-solution">
+		<div ng-show="adminQuestionDetails.type == 'MCQ' || adminQuestionDetails.type == 'SCQ'">
+			<span class="title">Options</span>
+			<div ng-repeat="item in [1,2,3,4]">
+				<span class="mark correct">
+					<i class="material-icons">done</i>
+				</span>
+				<span class="solution">{{item}}</span>
+			</div>
+		</div>
+		<div ng-show="adminQuestionDetails.type == 'Coding'">
+			<span class="title">Sample Input</span>
+			<div class="sample">
+				<div ng-repeat="item in ['ACB','DEF','GHI','JKL']" class="solution">
+					Print <code>{{item}}</code> on first line.
+				</div>
+			</div>
+			<div class="title">Sample Output</div>
+			<div class="sample">
+				<div ng-repeat="item in ['ACB','DEF','GHI','JKL']" class="solution">
+					Print <code>{{item}}</code> on first line.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

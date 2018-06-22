@@ -1,0 +1,28 @@
+.question-details{
+	margin: 0 auto;
+	width:80%;
+	.back-to-list{
+		border-bottom: 1px solid $dark-border;
+		padding-bottom: 10px;
+		.page-title{
+			margin-left: 10px;
+			font-size: 28px;
+		}
+	}
+	.question-title{
+		padding: 20px 0px;
+		font-weight: 400;
+	}
+	.question-solution{
+		padding: 10px 0;
+		.sample{
+		    background: #e6e6e6;
+		    padding: 10px;
+		    border: 1px solid #b9b9b9;
+		    margin: 10px 0;
+		}
+		.solution{
+			padding-left: 5px;
+		}
+	}
+}

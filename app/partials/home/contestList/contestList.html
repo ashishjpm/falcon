@@ -1,0 +1,30 @@
+<div class="admin-contest">
+	<div class="type-tabs">
+		<span
+			ng-class="['types', {'active' : (contestList.typeSelected == item)}]"
+			ng-repeat="item in contestList.type"
+			ng-click="contestList.typeSelected = item">
+				{{item}}
+		</span>
+	</div>
+	<div class="f-card-holder">
+		<div class="row">
+			<div 
+				class="col-md-4" 
+				ng-repeat="item in contestList.list"
+				ng-click="contestList.getDetails(item)"
+				ng-if="contestList.typeSelected == 'All' || contestList.typeSelected == item.status">
+					<div class="f-card">
+						<div class="cart-title">{{item.name}}</div>
+						<div class="padding-left-20">
+							<div>Description: {{item.description}}</div>
+							<div>Is Active: {{item.isActive}}</div>
+							<div ng-if="item.isActive">Ends In: {{item.endsIn}}</div>
+							<div ng-if="!item.isActive">Starts In: {{item.startIn}}</div>
+						</div>
+						<span class="info-pill">{{item.status}}</span>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>

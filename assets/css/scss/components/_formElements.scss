@@ -1,0 +1,52 @@
+.f-input{
+	display: block;
+  border: 1px solid #D4D9E2;
+  border-radius: 3px;
+  color: #596377;
+  outline: 0;
+  -webkit-transition: border-color .2s ease;
+  transition: border-color .2s ease;
+  &.md{
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+  &.lg{
+    padding: 12px;
+    font-size: 14px;
+  }
+  &.full{
+		width: 100%;
+  }
+}
+.f-text-area{
+  display: block;
+  border: 1px solid #D4D9E2;
+  border-radius: 3px;
+  color: #596377;
+  outline: 0;
+  -webkit-transition: border-color .2s ease;
+  transition: border-color .2s ease;
+  &.full{
+    width: 100%;
+  }
+}
+
+.f-select{
+  height : 30px;
+  text-transform : capitalize;
+  background-color: $white;
+  outline: 1px solid $dark-border;
+  outline-offset: -1px;
+  border: 0;
+  margin: 5px 0px;
+  @include font-normal(-4, 100);
+  text-align: left;
+  color: $font-black;
+  &.full{
+    width: 100%;
+  }
+  &.disabled{
+    border: none;
+      background: $box-border;
+  }
+}

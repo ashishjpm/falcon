@@ -1,0 +1,27 @@
+<div class="admin-contest">
+	<div class="type-tabs">
+		<span
+			ng-class="['types', {'active' : (adminQuestion.typeSelected == item)}]"
+			ng-repeat="item in adminQuestion.type"
+			ng-click="adminQuestion.typeSelected = item">
+				{{item}}
+		</span>
+	</div>
+	<div class="admin-question">
+
+		<div class="list-header clearfix">
+			<div class="col-md-4">Title</div>
+			<div class="col-md-3">Difficulty</div>
+			<div class="col-md-3">Type</div>
+		</div>	
+
+		<div class="f-card-list" ng-repeat="item in adminQuestion.list">
+			<div class="col-md-4">{{item.title}}</div>
+			<div class="col-md-3">{{item.difficultyLevel}}</div>
+			<div class="col-md-3">{{item.type}}</div>
+			<div class="col-md-2 text-right">
+				<button class="btn btn-grey" ng-click="adminQuestion.getQuestionDetails(item)">Details</button>
+			</div>
+		</div>
+	</div>
+</div>

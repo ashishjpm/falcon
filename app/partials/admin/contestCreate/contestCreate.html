@@ -1,0 +1,165 @@
+<div class="admin-contest-create">
+	<div class="page-head">
+		<i ng-click="contestCreate.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Create Contest</span>
+	</div>
+	<div class="steps-nav text-center row">
+		<div class="col-md-4">
+			<span ng-class="[{'done': (contestCreate.currentState > 1)}, {'active': (contestCreate.currentState == 1)}]">1</span>
+		</div>
+		<div class="col-md-4">
+			<span ng-class="[{'done': (contestCreate.currentState > 2)}, {'active': (contestCreate.currentState == 2)}, {'pending': (contestCreate.currentState < 2)}]">2</span>
+		</div>
+		<div class="col-md-4">
+			<span ng-class="[{'done': (contestCreate.currentState > 3)}, {'active': (contestCreate.currentState == 3)}, {'pending': (contestCreate.currentState < 3)}]">3</span>
+		</div>
+	</div>
+
+	<form action="" class="margin-top-20 step-one-form" ng-if="contestCreate.currentState == 1">
+		<div class="row">
+			<div class="col-md-2"><label for="">Name</label></div>
+			<div class="col-md-4">
+				<input class="f-input md full" type="text" ng-model="contestCreate.stepOne.name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Description</label></div>
+			<div class="col-md-4">
+				<textarea
+					name="description"
+					cols="30"
+					rows="5"
+					ng-model="contestCreate.stepOne.description"
+					class="f-text-area full">
+				</textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Start Date</label></div>
+			<div class="col-md-4">
+				<datepicker>
+				 	<input ng-model="contestCreate.stepOne.startDate" type="text" class="f-input md full">
+				</datepicker>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">End Date</label></div>
+			<div class="col-md-4">
+				<datepicker>
+				 	<input ng-model="contestCreate.stepOne.endDate" type="text" class="f-input md full">
+				</datepicker>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Open Contest</label></div>
+			<div class="col-md-4">
+				<div class="togglebutton success">
+					<label>
+				    <input type="checkbox" ng-model="contestCreate.stepOne.openContest">
+				    {{contestCreate.stepOne.openContest}}
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Team Contest</label></div>
+			<div class="col-md-4">
+				<div class="togglebutton success">
+					<label>
+				    <input type="checkbox" ng-model="contestCreate.stepOne.isTeamContest">
+				    {{contestCreate.stepOne.isTeamContest}}
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-if="contestCreate.stepOne.isTeamContest">
+			<div class="col-md-2"><label for="">Max Team Size</label></div>
+			<div class="col-md-4">
+				<input
+					ng-model="$parent.contestCreate.stepOne.maxTeamSize"
+					class="f-input md full"
+					type="number">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Duration (in Minutes)</label></div>
+			<div class="col-md-4">
+				<input
+					ng-model="contestCreate.stepOne.duration"
+					class="f-input md full"
+					type="number">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Type</label></div>
+			<div class="col-md-4">
+				<select name="" id="" ng-model="contestCreate.stepOne.type" class="f-select full">
+					<option value="FIXED">Fixed</option>
+					<option value="RANDOM">Random</option>
+				</select>
+			</div>
+		</div>
+	</form>
+	<form action="" ng-if="contestCreate.currentState == 2">
+		<div class="row" ng-repeat="item in contestCreate.fixedQueMeta track by $index">
+			<div class="col-md-3">
+				<select name="" id="" ng-model="item.category" ng-options="category.name for category in contestCreate.categoryList" class="f-select full">
+					<option value="" disabled selected>-- Choose Category --</option>
+				</select>
+			</div>
+			<div class="col-md-3">
+				<select name="" id="" ng-model="item.level" class="f-select full">
+					<option value="" disabled selected>-- Choose Question --</option>
+					<option value="easy">easy</option>
+					<option value="medium">medium</option>
+				</select>
+			</div>
+			<div class="col-md-3"><input ng-model="item.number" type="text" placeholder="Input Question Count" class="f-input md full"></div>
+			<div class="col-md-3 ">
+				<i class="material-icons" ng-if="$index == contestCreate.fixedQueMeta.length -1" ng-click="addCategory()">add_circle</i>
+				<i class="material-icons" ng-if="$index != contestCreate.fixedQueMeta.length -1" ng-click="removeCategory($index)">close</i>
+			</div>
+		</div>
+	</form>
+	<form action="" ng-if="contestCreate.currentState == 3">
+		<div class="row">
+			<div class="col-md-3"><label for="randomOrder">Random Order Required</label></div>
+			<div class="col-md-4">
+				<div class="togglebutton success">
+					<label>
+				    <input type="checkbox" id="randomOrder" ng-model="contestCreate.stepThree.isRandomOrder">
+				    {{contestCreate.stepThree.isRandomOrder}}
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3"><label for="">Activate Contest</label></div>
+			<div class="col-md-4">
+				<div class="togglebutton success">
+					<label>
+				    	<input type="checkbox" ng-model="contestCreate.stepThree.activateContest">
+				    	{{contestCreate.stepThree.activateContest}}
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row" ng-repeat="item in contestCreate.stepThree.inviteeDTOs track by $index">
+			<div class="col-md-3"><label for="">User Email address</label></div>
+			<div class="col-md-4">
+				<input class="f-input md full" type="text" ng-model="item.email">
+			</div>
+			<div class="col-md-3">
+				<i class="material-icons" ng-if="$index == contestCreate.stepThree.inviteeDTOs.length -1" ng-click="addInvitee()">add_circle</i>
+				<i class="material-icons" ng-if="$index != contestCreate.stepThree.inviteeDTOs.length -1" ng-click="removeInvitee($index)">close</i>
+			</div>
+		</div>
+	</form>
+	<div class="pull-right">
+		<button
+			class="btn btn-iv-red xlg" ng-click="submit()">
+			{{contestCreate.currentState == 3 ? 'Save' : 'Next'}}
+		</button>
+	</div>
+
+</div>

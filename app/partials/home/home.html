@@ -1,0 +1,20 @@
+<header>
+	<span class="header-logo">
+		<img src="/assets/images/f_logo.jpeg" alt="">
+	</span>
+	<span class="task-select">
+		<span class="task-title">{{root.userSelected}}</span>
+		<i class="material-icons">keyboard_arrow_down</i>
+	</span>
+	<span 
+		class="add-new" 
+		ng-if="root.user.showAddBtn">
+			<i class="material-icons">add</i>
+	</span>
+</header>
+
+<section>
+	<ui-view></ui-view>
+</section>
+
+<footer>© 2017 coviam.com All Rights Reserved</footer>
