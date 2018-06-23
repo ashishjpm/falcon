@@ -47,6 +47,12 @@
             }
         ];
 
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+        $scope.format = 'dd-MMMM-yyyy';
+        
         $scope.contestCreate.selectedQuestions=[];
     }
 

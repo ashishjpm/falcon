@@ -96,7 +96,8 @@
     }
     &.xlg{
         width: 150px;
-        @include font-light(-4,100);
+        line-height: 25px;
+        @include font-light(0,100);
     }
     &.xxlg{
         width: 170px;

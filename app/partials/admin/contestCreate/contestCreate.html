@@ -37,15 +37,15 @@
 		<div class="row">
 			<div class="col-md-2"><label for="">Start Date</label></div>
 			<div class="col-md-4">
-				<datepicker>
-				 	<input ng-model="contestCreate.stepOne.startDate" type="text" class="f-input md full">
+				<datepicker date-format="yyyy-MM-dd">
+				 	<input ng-model="contestCreate.stepOne.startDate" type="text" class="f-input md full" >
 				</datepicker>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-2"><label for="">End Date</label></div>
 			<div class="col-md-4">
-				<datepicker>
+				<datepicker date-format="yyyy-MM-dd">
 				 	<input ng-model="contestCreate.stepOne.endDate" type="text" class="f-input md full">
 				</datepicker>
 			</div>
@@ -157,7 +157,7 @@
 	</form>
 	<div class="pull-right">
 		<button
-			class="btn btn-iv-red xlg" ng-click="submit()">
+			class="falcon-btn btn btn-iv-red xlg round" ng-click="submit()">
 			{{contestCreate.currentState == 3 ? 'Save' : 'Next'}}
 		</button>
 	</div>

@@ -15,7 +15,7 @@
     function init(){
     	$scope.root.admin.showAddBtn = true;
         $scope.root.adminSelected = "My Contest";
-    	$scope.adminContest.type = ['All', 'Ongoing', 'Finished', 'Draft'];
+    	$scope.adminContest.type = ['All', 'ACTIVE', 'COMPLETED', 'DRAFT'];
     	$scope.adminContest.typeSelected = 'All';
         $scope.adminContest.list = [];
         updateAdminContestList();
@@ -38,8 +38,8 @@
         var elapsedMinutes = timeInMilliSeconds / minutesInMilli;
         timeInMilliSeconds = timeInMilliSeconds % minutesInMilli;
 
-        return padding(2, elapsedDays) + ":"
-        + padding(2, elapsedHours) + ":"
+        return padding(2, elapsedDays) + " : "
+        + padding(2, elapsedHours) + " : "
         + padding(2, elapsedMinutes);
     }
 
@@ -49,10 +49,10 @@
                 $scope.adminContest.list = [];
                 var now = new Date();
                 response.data.responseObject.forEach(function(contest){
-                    console.log(contest.startDate, contest.endDate);
+                    console.log(contest.status);
                     $scope.adminContest.list.push({
                         name : contest.name,
-                        status : $scope.adminContest.type[Math.floor(Math.random() * 4)],
+                        status : contest.status,
                         participants : contest.participantCount,
                         isActive : now.getTime() > contest.startDate,
                         startIn: covertTimeToString(contest.startDate - now.getTime()),
