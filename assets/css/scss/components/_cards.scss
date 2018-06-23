@@ -6,8 +6,9 @@
   cursor: pointer;
   position: relative;
   .cart-title{
-    font-size: 22px;
     padding: 12px 10px;
+    font-size: 18px;
+    font-weight: 400;
     text-align: center;
     border-bottom: 1px solid #dadada;
     margin-bottom: 10px;
@@ -36,4 +37,32 @@
   margin: 15px 0;
   cursor: pointer;
   line-height: 50px;
+}
+.jd-card {
+  height: 120px !important;
+  .cart-title{
+    text-align: left;
+    .ago {
+      font-size: 12px;
+      float: right;
+    }
+  }
+}
+
+.f-pill {
+  display: inline-block;
+  background: green;
+  color: #fff;
+  padding: 0px 10px;
+  font-size: 12px;
+  border-radius: 30px;
+  margin: 5px 5px 0 0;
+  line-height: 20px;
+  i {
+    font-size: 15px;
+    cursor: pointer;
+    top: 3px;
+    position: relative;
+    padding-left: 5px;
+  }
 }

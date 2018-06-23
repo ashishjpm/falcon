@@ -89,4 +89,24 @@ falcon
             templateUrl: 'app/partials/admin/result/result.html',
             controller: 'ContestResultCtrl'
         })
+
+
+    $stateProvider
+        .state('admin.jd', {
+            url: '/jd',
+            templateUrl: 'app/partials/admin/jd/jd.html',
+            controller: 'AdminJdCtrl'
+        })    
+    $stateProvider
+        .state('admin.jdCreate', {
+            url: '/jdCreate',
+            templateUrl: 'app/partials/admin/jd/jdCreate.html',
+            controller: 'AdminJdCreateCtrl'
+        })
+    $stateProvider
+        .state('admin.jdDetail', {
+            url: '/jdDetail/:id',
+            templateUrl: 'app/partials/admin/jd/jdDetail.html',
+            controller: 'AdminJdDetailCtrl'
+        })
 });

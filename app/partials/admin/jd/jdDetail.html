@@ -1,0 +1,34 @@
+<div class="admin-jd-detail">
+	<div class="page-head row">
+		<i ng-click="adminJdDetail.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Jd Detail</span>
+	</div>
+	<div class="title row">{{adminJdDetail.data.title}}</div>
+	<div class="skills row">
+		<span class="f-pill" ng-repeat="item in adminJdDetail.data.skills">{{item}}</span>
+	</div>
+	<div class="salary row">
+		<span class="key">Salary: </span>
+		<span>{{adminJdDetail.data.minSal | currency}} - {{adminJdDetail.data.maxSal | currency}}</span>
+	</div>
+	<div class="hiring-manager row">
+		<span class="key">Hiring Manager: </span>
+		<span>{{adminJdDetail.data.hiringManager}}</span>
+	</div>
+	<div class="experience row">
+		<span class="key">Experience: </span>
+		<span>{{adminJdDetail.data.minExp}} - {{adminJdDetail.data.maxExp}} Years</span>
+	</div>
+	<div class="description row">{{adminJdDetail.data.description}}</div>
+	<div class="awp row">
+		<span class="key">Good to have: </span>
+		<span>{{adminJdDetail.data.addedValuePoints}}</span>
+	</div>
+	<div class="notice row">
+		<span class="key">Notice Period: </span>
+		<span>{{adminJdDetail.data.noticePeriod}}</span>
+	</div>
+	<div class="pull-right row">
+		<button class="btn btn-iv-red xlg" ng-click="adminJdDetail.submit()">Get Candidate List</button>
+	</div>
+</div>

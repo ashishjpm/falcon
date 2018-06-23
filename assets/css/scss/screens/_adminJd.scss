@@ -1,0 +1,68 @@
+.admin-jd{
+	.type-tabs{    
+		width: 80%;
+    	margin: 0 auto 0 auto;
+		.types{
+	    padding: 5px 10px;
+    	margin: 0 10px;
+    	color: $font-black;
+    	cursor: pointer;
+			&.active{
+				border-bottom: 2px solid $iv-red;
+				color: $iv-red;
+			}
+		}
+	}
+}
+.admin-jd-create{
+  width: 80%;
+  margin: 0 auto 0 auto;
+  .page-head{
+    border-bottom: 1px solid $dark-border;
+    padding-bottom: 15px;
+    i{
+    font-size: 28px;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+    }
+    .page-title{
+      font-size: 28px;
+      margin-left: 10px;
+    }
+  }
+  .jd-create-form{
+    padding-bottom: 30px;
+    .row{
+      padding: 10px 0;
+    }
+  }
+}
+.admin-jd-detail{
+  .row {
+    margin-top: 10px;
+    .key {
+      @include font-semibold(0,100);
+    }
+  }
+  .title {
+    @include font-bold(2,100);
+    margin-top: 25px;
+  }
+	width: 80%;
+  margin: 0 auto 0 auto;
+  .page-head{
+  	border-bottom: 1px solid $dark-border;
+		padding-bottom: 15px;
+  	i{
+		font-size: 28px;
+		position: relative;
+		top: 5px;
+		cursor: pointer;
+  	}
+  	.page-title{
+  		font-size: 28px;
+			margin-left: 10px;
+  	}
+  }
+}

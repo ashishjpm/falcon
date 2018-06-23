@@ -1,0 +1,95 @@
+<div class="admin-jd-create">
+	<div class="page-head">
+		<i ng-click="adminJdCreate.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Create Jd</span>
+	</div>
+	<form action="" class="margin-top-20 jd-create-form">
+		<div class="row">
+			<div class="col-md-2"><label for="">Title</label></div>
+			<div class="col-md-4">
+				<input class="f-input md full" type="text" placeholder="ie. Web Developer" ng-model="adminJdCreate.data.title">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Tag</label></div>
+			<div class="col-md-4">
+				<select class="f-select md full" ng-model="adminJdCreate.data.tags[0]">
+					<option value="Product Manager" selected>Product Manager</option>
+					<option value="Backend Developer">Backend Developer</option>
+					<option value="UI Developer">UI Developer</option>
+					<option value="Dev-Ops">Dev-Ops</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Experience (in Yrs)</label></div>
+			<div class="col-md-2">
+				<input class="f-input md full" type="number" placeholder="Min Experience" ng-model="adminJdCreate.data.minExp">
+			</div>
+			<div class="col-md-2">
+				<input class="f-input md full" type="number" placeholder="Mix Experience" ng-model="adminJdCreate.data.maxExp">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Salary (in Rs)</label></div>
+			<div class="col-md-2">
+				<input class="f-input md full" type="number" placeholder="Min Salary" ng-model="adminJdCreate.data.minSal">
+			</div>
+			<div class="col-md-2">
+				<input class="f-input md full" type="number" placeholder="Mix Salary" ng-model="adminJdCreate.data.maxSal">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Skills</label></div>
+			<div class="col-md-4">
+				<input 
+					class="f-input md full" 
+					type="text" 
+					placeholder="ie. Java, HTML..." 
+					ng-model="adminJdCreate.currentSkill" 
+					ng-keyup="$event.keyCode == 13 && adminJdCreate.skillsAdded()">
+				<div class="f-pill" ng-repeat="item in adminJdCreate.data.skills track by $index">
+					{{item}}
+					<i class="material-icons" ng-click="adminJdCreate.removeSkill($index)">clear</i>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Notice Period (Days)</label></div>
+			<div class="col-md-4">
+				<select class="f-select md full" ng-model="adminJdCreate.data.noticePeriod">
+					<option value="0" selected>Any</option>
+					<option value="6">Currently Serving Notice Period </option>
+					<option value="1">15 Days or less </option>
+					<option value="2">1 Month </option>
+					<option value="3">2 Months </option>
+					<option value="4">3 Months </option>
+					<option value="5">More than 3 Months </option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Description</label></div>
+			<div class="col-md-4">
+				<textarea class="f-input md full" cols="30" rows="5" ng-model="adminJdCreate.data.description"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Added value points</label></div>
+			<div class="col-md-4">
+				<textarea class="f-input md full" cols="30" rows="5" ng-model="adminJdCreate.data.addedValuePoints"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Hiring Manager</label></div>
+			<div class="col-md-4">
+				<input class="f-input md full" type="text" placeholder="Hiring manager's name" ng-model="adminJdCreate.data.hiringManager">
+			</div>
+		</div>
+	</form>
+	<div class="pull-right">
+		<button class="btn btn-iv-red xlg" ng-click="adminJdCreate.submit()">Create</button>
+	</div>
+
+</div>

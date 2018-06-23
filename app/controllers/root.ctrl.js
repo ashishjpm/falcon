@@ -24,7 +24,8 @@
   	$scope.root.admin.gotoState = function(){
       var map = {
         "My Contest": "admin.contestCreate",
-        "My Questions": "admin.questionCreate"
+        "My Questions": "admin.questionCreate",
+        "Job Openings": "admin.jdCreate"
       }
   		$state.go(map[$scope.root.adminSelected]);
   		$scope.root.admin.showAddBtn = false;

@@ -73,6 +73,26 @@
             })
         }
 
+        function getJdList(){
+            return $http({
+                url: AppConstant.api_vishal + 'jd/list',
+                method: 'GET'
+            })
+        }
+        function createJdList(jd){
+            return $http({
+                url: AppConstant.api_vishal + 'jd/detail',
+                method: 'POST',
+                data : jd
+            })
+        }
+        function getJdDetail(id){
+            return $http({
+                url: AppConstant.api_vishal + 'jd/detail/'+ id,
+                method: 'GET'
+            })
+        }
+
         return {
             getContestList: getContestList,
             completeFirstStep: createContest,
@@ -82,7 +102,10 @@
             getCategories : getCategories,
             getAllQuestions: getAllQuestions,
             getQuestionDetails: getQuestionDetails,
-            getContestResult: getContestResult
+            getContestResult: getContestResult,
+            getJdList: getJdList,
+            createJdList: createJdList,
+            getJdDetail: getJdDetail
         };
     });
 }());

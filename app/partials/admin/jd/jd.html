@@ -1,0 +1,35 @@
+<div class="admin-jd">
+	<div class="type-tabs">
+		<span
+			ng-class="['types', {'active' : (jd.typeSelected == item)}]"
+			ng-repeat="item in jd.type"
+			ng-click="jd.typeSelected = item">
+				{{item}}
+		</span>
+	</div>
+	<div class="f-card-holder">
+		<div class="row">
+			<div
+				class="col-md-4"
+				ng-repeat="item in jd.list"
+				ng-if="jd.typeSelected == 'All' || jd.typeSelected == item.tags[0]"
+				ng-click="jd.cardClick(item.id)">
+					<div class="f-card jd-card">
+						<div class="cart-title clearfix">
+							{{item.title}}
+							<span class="ago" ng-if="!item.createdDateDiff">{{item.createdDateDiff}} days ago</span>
+							<span class="ago" ng-if="item.createdDateDiff">Today</span>
+						</div>
+						<div class="padding-left-20">
+							<div>
+								Experience: <span class="padding-left-20">{{item.minExp}} - {{item.maxExp}} years</span>
+							</div>
+							<div>
+								Hiring Manager: <span class="padding-left-20">{{item.hiringManager}}</span>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
