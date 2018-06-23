@@ -25,6 +25,17 @@ body{
 	@include font-light(0,100);
 }
 
+.logout-btn {
+  margin-right: 50px;
+  padding: 10px 25px;
+  cursor: pointer;
+  @extend %transition-fast;
+  &:hover {
+  	background: $modal-mask;
+  	@extend %transition-fast;
+  }
+}
+
 .mark{
 	padding: 1px;
 	border-radius: 50%;
