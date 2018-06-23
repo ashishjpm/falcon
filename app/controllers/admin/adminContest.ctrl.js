@@ -26,7 +26,6 @@
     }
 
     function covertTimeToString(state, start, end, now){
-        console.log(new Date(start), new Date(end), new Date(now));
         var timeInMilliSeconds = 0;
         if('start' == state && start > now) {
             timeInMilliSeconds = start - now;
@@ -35,8 +34,7 @@
         if('end' == state && end > now && start < end){
             timeInMilliSeconds = end - now;
         }
-        console.log(timeInMilliSeconds); 
-        
+        console.log("diff" , timeInMilliSeconds);         
         if(timeInMilliSeconds > 0){
             var minutesInMilli =  60000;
             var hoursInMilli = minutesInMilli * 60;
@@ -48,10 +46,15 @@
             var elapsedHours = timeInMilliSeconds / hoursInMilli;
             timeInMilliSeconds = timeInMilliSeconds % hoursInMilli;
 
-            var elapsedMinutes = timeInMilliSeconds / minutesInMilli;
+            var elapsedMinutes = timeInMilliSeconds // minutesInMilli;
             timeInMilliSeconds = timeInMilliSeconds % minutesInMilli;
 
-            return padding(2, elapsedDays) + " : " + padding(2, elapsedHours) + " : " + padding(2, elapsedMinutes);
+
+            console.log("days ", elapsedDays);
+
+            return padding(2, parseInt(elapsedDays)) + " : " 
+            + padding(2, parseInt(elapsedHours)) + " : " 
+            + padding(2, parseInt(elapsedMinutes));
         }
         return '';
     }
