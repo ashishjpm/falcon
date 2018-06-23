@@ -60,6 +60,13 @@
                 method: 'GET'
             })
         }
+        function createQuestion(data){
+            return $http({
+                url: AppConstant.api + 'question/save',
+                method: 'POST',
+                data: data
+            })
+        }
         function getQuestionDetails(id){
             return $http({
                 url: AppConstant.api + 'question/getQuestions/'+id,
@@ -92,6 +99,12 @@
                 method: 'GET'
             })
         }
+        function getCandidateList(id){
+            return $http({
+                url: AppConstant.api_vishal + 'candiate/list?id='+ id,
+                method: 'GET'
+            })
+        }
 
         return {
             getContestList: getContestList,
@@ -101,11 +114,13 @@
             saveContestConfigration:saveConfiguration,
             getCategories : getCategories,
             getAllQuestions: getAllQuestions,
+            createQuestion: createQuestion,
             getQuestionDetails: getQuestionDetails,
             getContestResult: getContestResult,
             getJdList: getJdList,
             createJdList: createJdList,
-            getJdDetail: getJdDetail
+            getJdDetail: getJdDetail,
+            getCandidateList: getCandidateList
         };
     });
 }());

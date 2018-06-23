@@ -1,1 +1,132 @@
-this is question create
+<div class="question-create">
+	<div class="page-head">
+		<i ng-click="adminQuestionCreate.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Create Question</span>
+	</div>
+	<form action="" class="margin-top-20 jd-create-form">
+		<div class="row">
+			<div class="col-md-2"><label for="">Title</label></div>
+			<div class="col-md-4">
+				<input class="f-input md full" type="text" placeholder="ie. Web Developer" ng-model="adminQuestionCreate.data.title">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Type</label></div>
+			<div class="col-md-4">
+				<select class="f-select md full" ng-model="adminQuestionCreate.data.type">
+					<option value="SINGLE_CORRECT" selected>Single Correct</option>
+					<option value="MULTIPLE_CORRECT">Multiple Correct</option>
+					<option value="CODING">Coading</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Category</label></div>
+			<div class="col-md-4">
+				<input 
+					class="f-input md full" 
+					type="text" 
+					placeholder="ie. Java, HTML..." 
+					ng-model="adminQuestionCreate.currentCategory" 
+					ng-keyup="$event.keyCode == 13 && adminQuestionCreate.categoryAdded()">
+				<div class="f-pill" ng-repeat="item in adminQuestionCreate.categories track by $index">
+					{{item}}
+					<i class="material-icons" ng-click="adminQuestionCreate.removeCategory($index)">clear</i>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Difficulty Level</label></div>
+			<div class="col-md-4">
+				<select class="f-select md full" ng-model="adminQuestionCreate.data.difficultyLevel">
+					<option value="BASIC" selected>Basic</option>
+					<option value="NORMAL">Normal</option>
+					<option value="ADVANCED">Advance</option>
+					<option value="INSANE">Insane</option>
+				</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"><label for="">Statement</label></div>
+			<div class="col-md-4">
+				<textarea class="f-input md full" cols="30" rows="5" ng-model="adminQuestionCreate.data.text"></textarea>
+			</div>
+		</div>
+		<div class="row" ng-show="adminQuestionCreate.data.type && (adminQuestionCreate.data.type != 'CODING')">
+			<div class="col-md-2"><label for="">Options</label></div>
+			<div class="col-md-4">
+				<div ng-repeat="item in [1,2,3,4] track by $index" class="margin-top-5 clearfix">
+					<div class="col-md-2" ng-show="adminQuestionCreate.data.type == 'SINGLE_CORRECT'">
+						<div class="radio">
+							<label>
+								<input type="radio" name="optionsRadios" ng-modal="adminQuestionCreate.optionSelection[$index]">
+							</label>
+						</div>
+					</div>
+					<div class="col-md-2" ng-show="adminQuestionCreate.data.type == 'MULTIPLE_CORRECT'">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="optionsCheckboxes" ng-modal="adminQuestionCreate.optionSelection[$index]">
+							</label>
+						</div>
+					</div>
+					<div class="col-md-10 padding-0">
+						<input class="f-input md full" type="text" placeholder="options" ng-model="adminQuestionCreate.optionsInput[$index]">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div ng-show="adminQuestionCreate.data.type == 'CODING'">
+			<div>
+				Enter testcases
+			</div>
+			<div class="row">
+				<div ng-repeat="item in adminQuestionCreate.testCaseDtos" class="col-md-7 test-case-wpr">
+					<div><div class="col-md-2">Input : </div>{{item.input}}</div>
+					<div><div class="col-md-2">Output : </div>{{item.output}}</div>
+					<div><div class="col-md-2">Marks : </div>{{item.marks}}</div>
+					<div><div class="col-md-2">Sample : </div>{{item.sample}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"><label for="">Sample Input</label></div>
+				<div class="col-md-4">
+					<textarea class="f-input md full" cols="30" rows="5" ng-model="adminQuestionCreate.tc.input"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"><label for="">Sample Output</label></div>
+				<div class="col-md-4">
+					<textarea class="f-input md full" cols="30" rows="5" ng-model="adminQuestionCreate.tc.output"></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"><label for="">Marks</label></div>
+				<div class="col-md-4">
+					<input class="f-input md full" type="number" placeholder="ie. Web Developer" ng-model="adminQuestionCreate.tc.marks">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"><label for="">Is Sample</label></div>
+				<div class="col-md-4">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="sample" ng-model="adminQuestionCreate.tc.sample">
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 text-right">
+					<div class="btn btn-grey xlg" ng-click="adminQuestionCreate.addTestCase()">
+						Add TestCase</div>
+				</div>
+			</div>
+		</div>
+
+	</form>
+	<div class="pull-right">
+		<button class="btn btn-iv-red xlg" ng-click="adminQuestionCreate.submit()">Create</button>
+	</div>
+</div>

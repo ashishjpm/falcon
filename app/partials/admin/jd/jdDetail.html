@@ -1,4 +1,4 @@
-<div class="admin-jd-detail">
+<div class="admin-jd-detail" ng-show="!adminJdDetail.loader">
 	<div class="page-head row">
 		<i ng-click="adminJdDetail.backToList()" class="material-icons">arrow_back</i>
 		<span class="page-title">Jd Detail</span>
@@ -29,6 +29,13 @@
 		<span>{{adminJdDetail.data.noticePeriod}}</span>
 	</div>
 	<div class="pull-right row">
-		<button class="btn btn-iv-red xlg" ng-click="adminJdDetail.submit()">Get Candidate List</button>
+		<button class="btn btn-iv-red xlg" ng-click="gotoCandidateList()">Get Candidate List</button>
 	</div>
+</div>
+<div class="pageloader" ng-show="adminJdDetail.loader">
+	<div class="spinner">
+	  <div class="cube1"></div>
+	  <div class="cube2"></div>
+	</div>
+	<div class="text-center">Loading...</div>
 </div>

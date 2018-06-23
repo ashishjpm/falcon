@@ -15,6 +15,7 @@
     function init(){
       $scope.root.admin.showAddBtn = false;
       $scope.root.adminSelected = "Jd Detail";
+      $scope.adminJdDetail.loader = true;
       $scope.adminJdDetail.data = {};
       getJdDetails()
     }
@@ -23,8 +24,13 @@
       AdminService.getJdDetail($stateParams.id).then(
         function(response) {
           $scope.adminJdDetail.data = response.data.responseObject;
+          $scope.adminJdDetail.loader = false;
         }, 
-        function(err) {})
+        function(err) {$scope.adminJdDetail.loader = false;})
+    }
+
+    $scope.gotoCandidateList = function() {
+      $state.go('admin.candidateList',{"id": $stateParams.id})
     }
 
     $scope.adminJdDetail.backToList = function() {
