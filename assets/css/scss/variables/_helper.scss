@@ -122,3 +122,6 @@
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
+
+# custom csss hacks
+.completed { margin-top:60px !important;}
