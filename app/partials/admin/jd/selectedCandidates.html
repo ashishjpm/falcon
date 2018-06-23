@@ -1,0 +1,30 @@
+<div class="admin-selected-candidate" ng-show="!selectedCandidate.loader">
+		<div class="page-head row">
+		<i ng-click="selectedCandidate.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Matched Candidate</span>
+	</div>
+	<div class="selected-candidate-list">
+
+		<div class="list-header clearfix">
+			<div class="col-md-4">Name</div>
+			<div class="col-md-3">Current Package</div>
+			<div class="col-md-3">Notice Period</div>
+		</div>	
+
+		<div class="f-card-list" ng-repeat="item in selectedCandidate.list">
+			<div class="col-md-4">{{item.name}}</div>
+			<div class="col-md-3">{{item.currentPackage}}</div>
+			<div class="col-md-3">{{item.noticePeriod}}</div>
+		</div>
+	</div>
+	<div class="pull-right" ng-if="selectedCandidate.showSubmit">
+		<button class="btn btn-iv-red xlg" ng-click="selectedCandidate.submitSelected()">Submit</button>
+	</div>
+</div>
+<div class="pageloader" ng-show="selectedCandidate.loader">
+	<div class="spinner">
+	  <div class="cube1"></div>
+	  <div class="cube2"></div>
+	</div>
+	<div class="text-center">Loading...</div>
+</div>

@@ -105,6 +105,13 @@
                 method: 'GET'
             })
         }
+        function submitSelectedCandidate(candidateIdList, id){
+            return $http({
+                url: AppConstant.api_vishal + '/shortlist/selectCandidates/'+ id,
+                method: 'POST',
+                data : {'selectedIds': candidateIdList}
+            })
+        }
 
         return {
             getContestList: getContestList,
@@ -120,7 +127,8 @@
             getJdList: getJdList,
             createJdList: createJdList,
             getJdDetail: getJdDetail,
-            getCandidateList: getCandidateList
+            getCandidateList: getCandidateList,
+            submitSelectedCandidate: submitSelectedCandidate
         };
     });
 }());
