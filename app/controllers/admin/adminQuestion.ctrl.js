@@ -15,7 +15,7 @@
         function init(){
         	$scope.root.admin.showAddBtn = true;
         	$scope.root.adminSelected = "My Questions";
-        	$scope.adminQuestion.type = ['All', 'MCQ', 'SCQ', 'Coding'];
+            $scope.adminQuestion.types = {"All":"All","SINGLE_CORRECT":"Single Choice Question","MULTIPLE_CORRECT":'Multiple Choice Question','CODING':'Programming Question'};
         	$scope.adminQuestion.typeSelected = 'All';
             $scope.adminQuestion.list = [];
             updateQuestionList();
@@ -32,8 +32,7 @@
         }
 
         $scope.adminQuestion.getQuestionDetails = function(question){
-            localStorage.setItem('questionId', question.id);
-            $state.go('admin.questionDetail');
+            $state.go('admin.questionDetail',{'id': question.questionId});
         }
 
         init();

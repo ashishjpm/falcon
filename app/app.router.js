@@ -73,7 +73,7 @@ falcon
         })
     $stateProvider
         .state('admin.questionDetail', {
-            url: '/questionDetail',
+            url: '/questionDetail/:id',
             templateUrl: 'app/partials/admin/questionDetail/questionDetail.html',
             controller: 'QuestionDetailCtrl'
         })

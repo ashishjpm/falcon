@@ -26,16 +26,19 @@ body{
 }
 
 .mark{
-	padding: 1px;
+	padding: 1px 2px;
 	border-radius: 50%;
+  background: $body-background;
+  i{
+    position: relative;
+    top: 1px;
+    left: 2px;
+    font-size: 13px;
+  }
 	&.correct{
 		background: green;
 		i{
 			color: $white;
-			position: relative;
-	    top: 1px;
-	    left: 2px;
-	    font-size: 13px;
 		}
 	}
 	&.failed{

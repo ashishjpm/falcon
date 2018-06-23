@@ -35,21 +35,20 @@
         "sample": $scope.adminQuestionCreate.tc.sample
       });
     } 
-    $scope.adminQuestionCreate.submit = function(){
+    $scope.adminQuestionCreate.submit = function(){ 
+      $scope.adminQuestionCreate.data.customerId = 1001;
+      $scope.adminQuestionCreate.data.categoryDtos = [];
+      $scope.adminQuestionCreate.data.categoryDtos = $scope.adminQuestionCreate.categories.map((item) => ({"name": item}));  
       if($scope.adminQuestionCreate.data.type != 'CODING') {
         $scope.adminQuestionCreate.data.options = [];
-        $scope.adminQuestionCreate.data.customerId = 1001;
-        $scope.adminQuestionCreate.data.categoryDtos = [];
-        $scope.adminQuestionCreate.data.categoryDtos = $scope.adminQuestionCreate.categories.map((item) => ({"name": item}));
-        for(var i=0; i<3; i++) {
+       for(var i=0; i<3; i++) {
           $scope.adminQuestionCreate.data.options.push({
             "isCorrect": $scope.adminQuestionCreate.optionSelection[i],
             "order": i,
             "value": $scope.adminQuestionCreate.optionsInput[i]
           });
         }
-      }
-      else {
+      } else {
         $scope.adminQuestionCreate.data.testCaseDtos = $scope.adminQuestionCreate.testCaseDtos;
       }
 

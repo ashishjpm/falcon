@@ -69,7 +69,7 @@
         }
         function getQuestionDetails(id){
             return $http({
-                url: AppConstant.api + 'question/getQuestions/'+id,
+                url: AppConstant.api + 'question/getQuestion/'+id,
                 method: 'GET'
             })
         }

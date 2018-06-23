@@ -8,30 +8,30 @@
 ;
 (function() {
  falcon
-    .controller('QuestionDetailCtrl', ['$scope', '$state' ,'CommonService', 'AdminService',
-        function($scope, $state ,CommonService, AdminService) {
-        $scope.adminQuestionDetails = {};
+    .controller('QuestionDetailCtrl', ['$scope', '$state' ,'CommonService', 'AdminService', '$stateParams',
+        function($scope, $state ,CommonService, AdminService, $stateParams) {
+        
+        $scope.adminQuestion = {};
 
         function init(){
             $scope.root.admin.showAddBtn = true;
             $scope.root.adminSelected = "Question Details";
-            $scope.adminQuestionDetails.typeList = ['SCQ','MCQ','Coding'];
-            $scope.adminQuestionDetails.type = 'Coding';
-            $scope.adminQuestionDetails.value = {}; 
+            $scope.questionTypes = {"All":"All","SINGLE_CORRECT":"Single Choice Question","MULTIPLE_CORRECT":'Multiple Choice Question','CODING':'Programming Question'};
             getQuestionDetails();           
         }
 
         function getQuestionDetails(){
-            $scope.adminQuestionDetails.value = {};
-            AdminService.getQuestionDetails(localStorage.getItem('questionId')).then(
+            AdminService.getQuestionDetails($stateParams.id).then(
                 function(response){
-                    $scope.adminQuestionDetails.value = response;
+                    $scope.adminQuestion.data = response.data.responseObject;
                 },
-                function(err){console.log(err);}
+                function(err){
+                    console.log(err);   
+                }
             );
         }
 
-        $scope.adminQuestionDetails.backToList = function(){
+        $scope.adminQuestion.backToList = function(){
             $state.go('admin.question');
         }
 
