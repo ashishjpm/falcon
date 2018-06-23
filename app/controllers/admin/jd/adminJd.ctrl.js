@@ -16,21 +16,22 @@
     	$scope.root.admin.showAddBtn = true;
         $scope.root.adminSelected = "Job Openings";
     	$scope.jd.type = ['All', 'Product Manager', 'UI Developer', 'Backend Developer', 'Dev-Ops'];
-    	$scope.jd.typeSelected = 'All';
+        $scope.jd.typeSelected = 'All';
+    	$scope.jd.loader = true;
         $scope.jd.list = [];
         updateJdList();
     }
     $scope.jd.cardClick = function(id) {
         $state.go('admin.jdDetail', {"id": id});
     }
-
     function updateJdList(){
         AdminService.getJdList().then(
             function(response){
                 $scope.jd.list = response.data.responseObject.content;
+                $scope.jd.loader = false;
             },
             function(err){
-                console.log(err);
+                $scope.jd.loader = false;
             }
         );
     }

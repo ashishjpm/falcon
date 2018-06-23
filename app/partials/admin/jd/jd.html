@@ -1,4 +1,4 @@
-<div class="admin-jd">
+<div class="admin-jd" ng-show="!jd.loader">
 	<div class="type-tabs">
 		<span
 			ng-class="['types', {'active' : (jd.typeSelected == item)}]"
@@ -32,4 +32,12 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div class="pageloader" ng-show="jd.loader">
+	<div class="spinner">
+	  <div class="cube1"></div>
+	  <div class="cube2"></div>
+	</div>
+	<div class="text-center">Loading...</div>
 </div>

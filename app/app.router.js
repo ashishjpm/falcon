@@ -109,4 +109,10 @@ falcon
             templateUrl: 'app/partials/admin/jd/jdDetail.html',
             controller: 'AdminJdDetailCtrl'
         })
+    $stateProvider
+        .state('admin.candidateList', {
+            url: '/candidateList/:id',
+            templateUrl: 'app/partials/admin/jd/candidateList.html',
+            controller: 'AdminCandidateListCtrl'
+        })
 });

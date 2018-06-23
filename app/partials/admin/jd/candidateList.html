@@ -1,0 +1,14 @@
+<div class="admin-jd-detail" ng-show="!candidate.loader">
+		<div class="page-head row">
+		<i ng-click="candidate.backToList()" class="material-icons">arrow_back</i>
+		<span class="page-title">Matched Candidate</span>
+	</div>
+
+</div>
+<div class="pageloader" ng-show="candidate.loader">
+	<div class="spinner">
+	  <div class="cube1"></div>
+	  <div class="cube2"></div>
+	</div>
+	<div class="text-center">Loading...</div>
+</div>
