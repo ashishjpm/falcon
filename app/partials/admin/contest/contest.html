@@ -15,12 +15,16 @@
 				ng-if="adminContest.typeSelected == 'All' || adminContest.typeSelected == item.status">
 					<div class="f-card">
 						<div class="cart-title">{{item.name}}</div>
-						<div class="padding-left-20">
-							<div>Participants : {{item.participants}}</div>
-							<div ng-if="item.isActive">Ending In  {{item.endsIn}}</div>
-							<div ng-if="!item.isActive">Starts In {{item.startIn}}</div>
+						<div class="padding-left-20">Participants : {{item.participants}}</div>
+						<div ng-if="item.isActive">
+							<div class="text-center margin-top-10"><span class="start-end">Ending In</span></div>
+							<div class="text-center"><span>{{item.endsIn}}</span></div>
 						</div>
-						<span class="info-pill">{{item.status}}</span>
+						<div ng-if="!item.isActive">
+							<div class="text-center margin-top-10"><span class="start-end">Starts In</span></div>
+							<div class="text-center"><span>{{item.startIn}}</span></div>
+						</div>
+						<div class="text-center margin-top-10"><span class="info-pill">{{item.status}}</span></div>
 					</div>
 			</div>
 		</div>

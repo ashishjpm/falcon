@@ -14,7 +14,7 @@
 
     function init(){
       $scope.root.admin.showAddBtn = false;
-      $scope.root.adminSelected = "Jd Detail";
+      $scope.root.adminSelected = "Job Description";
       $scope.adminJdDetail.loader = true;
       $scope.adminJdDetail.data = {};
       getJdDetails()

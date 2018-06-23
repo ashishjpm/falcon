@@ -3,7 +3,23 @@
 		<i ng-click="candidate.backToList()" class="material-icons">arrow_back</i>
 		<span class="page-title">Matched Candidate</span>
 	</div>
+	<div class="candidate-list">
 
+		<div class="list-header clearfix">
+			<div class="col-md-4">Name</div>
+			<div class="col-md-3">Current Package</div>
+			<div class="col-md-3">Notice Period</div>
+		</div>	
+
+		<div class="f-card-list" ng-repeat="item in candidate.list">
+			<div class="col-md-4">{{item.name}}</div>
+			<div class="col-md-3">{{item.currentPackage}}</div>
+			<div class="col-md-3">{{item.noticePeriod}}</div>
+			<div class="col-md-2 text-right">
+				<button class="btn btn-grey" ng-click="adminQuestion.getQuestionDetails(item)">Details</button>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="pageloader" ng-show="candidate.loader">
 	<div class="spinner">
