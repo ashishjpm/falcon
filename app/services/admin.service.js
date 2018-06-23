@@ -101,7 +101,7 @@
         }
         function getCandidateList(id){
             return $http({
-                url: AppConstant.api_vishal + 'candiate/list?id='+ id,
+                url: AppConstant.api_vishal + 'shortlist/getCandidates/'+ id,
                 method: 'GET'
             })
         }

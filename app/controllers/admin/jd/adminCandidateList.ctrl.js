@@ -25,7 +25,7 @@
     function getCandidateList(){
         AdminService.getCandidateList($stateParams.id).then(
             function(response){
-                $scope.candidate.list = response.data.responseObject.content;
+                $scope.candidate.list = response.data.responseObject.candidates;
                 $scope.candidate.loader = false;
             },
             function(err){
