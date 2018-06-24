@@ -26,7 +26,7 @@
         }
         $scope.selectedCandidate.statusMap = {
             "INVITED": "Invited",
-            "PARTICIPATED": "Patticipated"
+            "PARTICIPATED": "Participated"
         }
     }
     $scope.selectedCandidate.backToList = function() {

@@ -113,7 +113,13 @@
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Work Experiences</div>
-				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.workExperiences}}</div>
+				<div class="col-md-10 value">
+					<div class="we-section" ng-repeat="workExperience in candidateDetail.data.naukriProfileDto.workExperiences">
+						<div ng-repeat="(key,value) in workExperience">
+							{{key}}: {{value}}
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div ng-show="candidateDetail.typeSelected == 'Github'" class="github">
@@ -172,12 +178,22 @@
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Work Experiences</div>
-				<div class="col-md-10 value">{{candidateDetail.data.linkedInProfileResponse.workExperiences}}</div>
+				<div class="col-md-10 value">
+					<div class="we-section" ng-repeat="workExperience in candidateDetail.data.linkedInProfileResponse.workExperiences">
+						<div ng-repeat="(key,value) in workExperience">
+							{{key}}: {{value}}
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Qualifications</div>
 				<div class="col-md-10 value">
-					{{candidateDetail.data.linkedInProfileResponse.qualifications}}
+					<div class="we-section" ng-repeat="qualification in candidateDetail.data.linkedInProfileResponse.qualifications">
+						<div ng-repeat="(key,value) in qualification">
+							{{key}}: {{value}}
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">
