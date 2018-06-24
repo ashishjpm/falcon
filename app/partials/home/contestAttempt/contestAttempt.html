@@ -6,9 +6,9 @@
 			ng-click="contestAttempt.updateQue(item, $index)">
 				<span
 					ng-class="['mark',
-						{'correct': contestAttempt.activeQuestion.completed},
-						{'attempted':contestAttempt.activeQuestion.inProgress},
-						{'unAttempted':contestAttempt.activeQuestion.unAttempted}]">
+						{'correct': item.attempted},
+						{'inprogress':item.inProgress},
+						{'unAttempted':item.unAttempted}]">
 					<i class="material-icons">done</i>
 				</span>
 				<span class="question">{{item.questionTitle}}</span>
@@ -70,7 +70,7 @@
 						<label>
 							<input
 								type="radio"
-								ng-model="contestAttempt.selectedSCQ[contestAttempt.currentQue.questionId]"
+								ng-model="contestAttempt.selectedQuestion[item.questionId]"
 								ng-value="item.optionId"
 								name="questionType">
 							{{item.value}}
@@ -78,20 +78,20 @@
 					</div>
 				</div>
 			</div>
-			<!-- <div class="options" ng-show="(contestAttempt.currentQue.questionType == 'SINGLE_CORRECT')">
+			<div class="options" ng-show="(contestAttempt.currentQue.questionType == 'MULTIPLE_CORRECT')">
 				<div ng-repeat="item in contestAttempt.currentQue.optionDtos track by $index">
 					<div class="checkbox">
 						<label>
 							<input
 								type="checkbox"
 								name="optionsCheckboxes[]"
-								ng-model="asd[$index]">
+								ng-model="contestAttempt.selectedQuestion[item.questionId][item.optionId]">
 							{{item.value}}
 						</label>
 					</div>
 				</div>
 				{{contestAttempt.selectedMCQValues}}
-			</div> -->
+			</div>
 			<div class="margin-right-30 clearfix">
 				<button class="btn btn-iv-red lg pull-right margin-left-10" ng-click="submitOptions()">Submit</button>
 			</div>

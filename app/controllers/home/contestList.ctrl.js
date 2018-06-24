@@ -15,7 +15,7 @@
 
     	function init(){
     		$scope.root.userSelected = "My Contests";
-    		$scope.contestList.type = ['All', 'Ongoing', 'Completed']
+            $scope.contestList.type = ['All', 'ACTIVE', 'COMPLETED'];
     		$scope.contestList.typeSelected = 'All';
     		$scope.contestList.list = [];
             updateUserContestList();

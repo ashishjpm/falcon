@@ -40,13 +40,13 @@ body{
 .mark{
 	padding: 1px 2px;
 	border-radius: 50%;
-  background: $body-background;
-  i{
-    position: relative;
-    top: 1px;
-    left: 2px;
-    font-size: 13px;
-  }
+  	background: $body-background;
+	i{
+	    position: relative;
+	    top: 1px;
+	    left: 2px;
+	    font-size: 13px;
+	 }
 	&.correct{
 		background: green;
 		i{
@@ -58,20 +58,20 @@ body{
 		i{
 			color: $white;
 			position: relative;
-	    top: 1px;
-	    left: 2px;
-	    font-size: 13px;
+	    	top: 1px;
+	    	left: 2px;
+	    	font-size: 13px;
 		}
 	}
-	&.attempted{
-		padding : 1px 10px;
+	&.inprogress{
 		background: #da8e62;
 		i{
-			display: none;
+			color: $white;
 		}
 	}
 	&.unAttempted{
-		background:white;
+		padding : 1px 10px;
+		background:#a9b2b3;
 		i{
 			display: none;
 		}

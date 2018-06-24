@@ -20,9 +20,9 @@
             $scope.contestAttempt.langData = [];
             $scope.contestAttempt.testCaseResults=[];
             $scope.contestAttempt.activeQuestion = {
-            	'inProgress' : true,
-            	'completed' : false,
-            	'unAttempted' : false
+            	'inProgress' : false,
+            	'attempted' : false,
+            	'unAttempted' : true
             }
             $scope.contestAttempt.langData = [];
             $scope.contestAttempt.currentQue = {};
@@ -55,18 +55,21 @@
                             $.material.init();
                         });
                     }, 0);
+                    updateQuestionStatus($scope.contestAttempt.currentQue, 'inProgress');
                 },
                 function(err){console.log(err);}
             );
         }
 
         $scope.contestAttempt.updateQue = function(question, index){
+            console.log("updating question ", question);
             $scope.contestAttempt.currentQue = question;
             $scope.contestAttempt.currentIndex = index;
             $timeout(function() {
                 $(document).ready(function(){
                     $.material.init();
                 });
+                updateQuestionStatus($scope.contestAttempt.currentQue, 'inProgress');
             }, 0);
         }
 
@@ -120,25 +123,61 @@
                 }
             )
         };
+        
+        var updateQuestionStatus = function (currentQue, stage){
+            if(currentQue){
+                $scope.contestAttempt.queDetails.forEach(function(question){
+                    if(stage == 'inProgress' && question.inProgress){
+                        question.inProgress = false;
+                    }
+                });
+                $scope.contestAttempt.queDetails.forEach(function(question){
+                    if(question.id == currentQue.id){
+                        question.inProgress = false;
+                        question[stage]=true;
+                    }
+                });
+            }
+        };
 
-        $scope.submitOptions = function(){
+        $scope.submitOptions = function(){            
+            if(!$scope.contestAttempt.selectedQuestion){
+                return;
+            }
+            var options = [];
+            console.log('selectedQuestion', $scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId]);
+            Object.keys($scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId]).forEach(function(key,index) {
+                if($scope.contestAttempt.currentQue.type == 'MULTIPLE_CORRECT'){
+                    var data = $scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId];
+                    Object.keys(data).forEach(function(key){
+                        options.push(data[key]);
+                    });
+                } else{
+                    options.push($scope.contestAttempt.selectedQuestion[key]);
+                }
+            });
+            console.log("options", options);
             var reqBody = [{
                 "contestId": 10001,
-                "answerGiven": [$scope.contestAttempt.selectedSCQ[$scope.contestAttempt.currentQue.questionId]],
+                "answerGiven": options,
                 "questionId": $scope.contestAttempt.currentQue.questionId,
                 "timeTaken": 0,
                 "marks": $scope.contestAttempt.currentQue.points,
                 "negativeMarks": $scope.contestAttempt.currentQue.negativePoints,
-                "questionType": "SINGLE_CORRECT"
-            }]
+                "questionType": $scope.contestAttempt.currentQue.type
+            }];
             UserService.submitOptions(reqBody,$scope.contestAttempt.currentQue.questionId).then(
                 function(response){
-                    console.log("success");
-                    $scope.contestAttempt.currentIndex = $scope.contestAttempt.currentIndex + 1;
-                    $scope.contestAttempt.currentQue = $scope.contestAttempt.queDetails[$scope.contestAttempt.currentIndex];
+                    updateQuestionStatus($scope.contestAttempt.currentQue, 'attempted');
+
+                    if($scope.contestAttempt.queDetails.length > $scope.contestAttempt.currentIndex + 1){
+                        $scope.contestAttempt.currentIndex = $scope.contestAttempt.currentIndex + 1;
+                        $scope.contestAttempt.currentQue = $scope.contestAttempt.queDetails[$scope.contestAttempt.currentIndex];
+                        updateQuestionStatus($scope.contestAttempt.currentQue, 'inProgress');
+                    }
                 },
                 function(err){
-
+                    console.log(err);
                 }
             );
         }
