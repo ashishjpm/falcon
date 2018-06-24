@@ -50,7 +50,9 @@
                 );
             }
             else {
-                UserService.takeTest(localStorage.getItem('contestId')).then(
+                var details = $stateParams.userId;
+                console.log('contestId', $stateParams.userId);
+                UserService.takeTest($stateParams.userId).then(
                     function(response){
                         $scope.contestDetail.details = response.data.responseObject;
                         $scope.contestDetail.details.startDate = CommonService.tsToDateString($scope.contestDetail.details.startDate);
@@ -58,7 +60,10 @@
                         window.localStorage.setItem('candidateId', $scope.contestDetail.details.inviteeDTOs[0].candidateId);
                     },
                     function(err){
+                        console.log(err);
+                        swal("Error !!!", 'Unable to handle process request, Please try again later', "error");
                         $scope.contestDetail.details = [];
+                        $state.go('home.contestList');
                     }
                 );
             }

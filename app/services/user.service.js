@@ -91,7 +91,7 @@
         }
         function takeTest(testId){
             return $http({
-                url: AppConstant.api + 'falcon/take-test?testId=' + testId,
+                url: AppConstant.base + 'falcon/take-test?testId=' + testId,
                 method: 'GET'
             })
         }

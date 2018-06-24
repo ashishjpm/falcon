@@ -89,51 +89,51 @@
 
         function getJdList(){
             return $http({
-                url: AppConstant.api_vishal + 'jd/list',
+                url: AppConstant.api_void + 'jd/list',
                 method: 'GET'
             })
         }
         function createJdList(jd){
             return $http({
-                url: AppConstant.api_vishal + 'jd/detail',
+                url: AppConstant.api_void + 'jd/detail',
                 method: 'POST',
                 data : jd
             })
         }
         function getJdDetail(id){
             return $http({
-                url: AppConstant.api_vishal + 'jd/detail/'+ id,
+                url: AppConstant.api_void + 'jd/detail/'+ id,
                 method: 'GET'
             })
         }
         function getCandidateList(id){
             return $http({
-                url: AppConstant.api_vishal + 'shortlist/getCandidates/'+ id,
+                url: AppConstant.api_void + 'shortlist/getCandidates/'+ id,
                 method: 'GET'
             })
         }
         function submitSelectedCandidate(candidateIdList, id){
             return $http({
-                url: AppConstant.api_vishal + 'shortlist/selectCandidates/'+ id,
+                url: AppConstant.api_void + 'shortlist/selectCandidates/'+ id,
                 method: 'POST',
                 data : {'selectedIds': candidateIdList}
             })
         }
         function getSelectedCandidateList(id) {
             return $http({
-                url: AppConstant.api_vishal + 'shortlist/getSelectedCandidates/'+ id,
+                url: AppConstant.api_void + 'shortlist/getSelectedCandidates/'+ id,
                 method: 'GET'
             })
         }
         function rejectCandidate(jdId,candidateId) {
             return $http({
-                url: AppConstant.api_vishal + 'shortlist/rejectCandidate?jdId='+ jdId + '&candidateId=' + candidateId,
+                url: AppConstant.api_void + 'shortlist/rejectCandidate?jdId='+ jdId + '&candidateId=' + candidateId,
                 method: 'GET',
             })
         }
         function candidateAction(jdId,candidateId,action) {
             return $http({
-                url: AppConstant.api_vishal + 'action/'+ action,
+                url: AppConstant.api_void + 'action/'+ action,
                 method: 'POST',
                 data : {
                     'jdId': jdId,
@@ -143,14 +143,14 @@
         }
         function getCandidateDetails(candidateId) {
             return $http({
-                url: AppConstant.api_vishal + 'profile/getCandidateProfile?candidateId='+ candidateId,
+                url: AppConstant.api_void + 'profile/getCandidateProfile?candidateId='+ candidateId,
                 method: 'GET'
             })
         }
 
         function fetchSelectedQuestions(data) {
             return $http({
-                url: AppConstant.api_vishal + 'question/getFixedQuestions',
+                url: AppConstant.api_void + 'question/getFixedQuestions',
                 method: 'POST',
                 data : data
             })
