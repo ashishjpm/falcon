@@ -8,8 +8,8 @@
 ;
 (function() {
  falcon
-    .controller('ContestAttemptCtrl', ['$scope', '$state' ,'$timeout','CommonService', 'UserService',
-    	function($scope, $state, $timeout, CommonService, UserService) {
+    .controller('ContestAttemptCtrl', ['$scope', '$state' ,'$timeout','CommonService', 'UserService','$stateParams'
+    	function($scope, $state, $timeout, CommonService, UserService, $stateParams) {
         $scope.root.activeUser = window.localStorage.getItem('userId');
         $scope.root.activeContestId = window.localStorage.getItem('contestId');
         $scope.contestAttempt = {};
@@ -62,7 +62,6 @@
         }
 
         $scope.contestAttempt.updateQue = function(question, index){
-            console.log("updating question ", question);
             $scope.contestAttempt.currentQue = question;
             $scope.contestAttempt.currentIndex = index;
             $timeout(function() {
@@ -75,7 +74,6 @@
 
     	function getOngoingAttemptList(){
     		$scope.contestAttempt.list = [];
-            console.log("contestId", $scope.root.user.activeContestId);
     		UserService.getContestDetail($scope.root.user.activeContestId).then(
     			function(response){
     				$scope.contestAttempt.list = response.data.responseObject.contestQuestionDTOs;
@@ -96,7 +94,6 @@
 
         $scope.testCode = function(){
             $scope.contestAttempt.loader = true;
-            console.log('userid', $scope.root.activeUser);
             var code = myCodeMirror.getValue();
             var language = $scope.contestAttempt.language;
             var questionId = $scope.contestAttempt.currentQue.questionId;
@@ -132,7 +129,7 @@
                     }
                 });
                 $scope.contestAttempt.queDetails.forEach(function(question){
-                    if(question.id == currentQue.id){
+                    if(question.id == currentQue.id && !question.attempted){
                         question.inProgress = false;
                         question[stage]=true;
                     }
@@ -145,20 +142,21 @@
                 return;
             }
             var options = [];
-            console.log('selectedQuestion', $scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId]);
-            Object.keys($scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId]).forEach(function(key,index) {
-                if($scope.contestAttempt.currentQue.type == 'MULTIPLE_CORRECT'){
-                    var data = $scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId];
-                    Object.keys(data).forEach(function(key){
-                        options.push(data[key]);
-                    });
-                } else{
-                    options.push($scope.contestAttempt.selectedQuestion[key]);
+            var data = $scope.contestAttempt.selectedQuestion[$scope.contestAttempt.currentQue.questionId];
+            Object.keys(data).forEach(function(key,index) {
+                if($scope.contestAttempt.currentQue.questionType == 'MULTIPLE_CORRECT'){
+                    if(data[key]){
+                        options.push(parseInt(key));
+                    }
+                } else {
+                    options.push(parseInt(data[key]));
                 }
             });
-            console.log("options", options);
+            
             var reqBody = [{
-                "contestId": 10001,
+                "candidateId" : $scope.root.activeUser,
+                "userId" :  $scope.root.activeUser,
+                "contestId": $scope.root.activeContestId,
                 "answerGiven": options,
                 "questionId": $scope.contestAttempt.currentQue.questionId,
                 "timeTaken": 0,

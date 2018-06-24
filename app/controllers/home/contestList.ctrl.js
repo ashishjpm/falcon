@@ -42,7 +42,7 @@
                             id : contest.id,
                             name : contest.name,
                             status : $scope.contestList.type[Math.floor(Math.random() * 4)],
-                            description : contest.description,
+                            description : contest.description.substring(0,40) + "...",
                             isActive : now.getTime() > contest.startDate,
                             startIn: covertTimeToString(contest.startDate - now.getTime()),
                             endsIn : covertTimeToString(contest.endDate - now.getTime())
