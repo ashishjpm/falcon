@@ -9,9 +9,10 @@ var falcon = angular.module('falcon', ['ui.router','720kb.datepicker']);
 
 falcon.run(function($state, $rootScope){
     $rootScope.$on('$stateChangeSuccess', function(){
-        $(document).ready(function(){
-        	$.material.init();
-        });
+      $(document).ready(function(){
+      	$.material.init();
+      });
+      window.scrollTo({top: 0});
     });
     $rootScope.$state = $state;
 });
