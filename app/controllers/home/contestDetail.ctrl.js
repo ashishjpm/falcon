@@ -12,7 +12,7 @@
     	function($scope, $state ,CommonService, UserService, $stateParams) {
         $scope.root.user.activeContestId = window.localStorage.getItem('contestId');
         $scope.contestDetail = {};
-        $scope.contestDetail.isAttempted = window.localStorage.getItem('contestAttempted-'+$scope.root.user.activeContestId);
+        $scope.contestDetail.isAttempted = window.localStorage.getItem('contestAttempted-'+$scope.root.user.activeContestId) == 'true';
         console.log('attemptContest ', $scope.contestDetail.isAttempted);
         console.log('attemptContest id', $scope.root.user.activeContestId);
 
@@ -55,7 +55,7 @@
                         $scope.contestDetail.details = response.data.responseObject;
                         $scope.contestDetail.details.startDate = CommonService.tsToDateString($scope.contestDetail.details.startDate);
                         $scope.contestDetail.details.endDate = CommonService.tsToDateString($scope.contestDetail.details.endDate);
-                        window.localStorage.setItem('userId', $scope.contestDetail.details.inviteeDTOs[0].candidateId);
+                        window.localStorage.setItem('candidateId', $scope.contestDetail.details.inviteeDTOs[0].candidateId);
                     },
                     function(err){
                         $scope.contestDetail.details = [];

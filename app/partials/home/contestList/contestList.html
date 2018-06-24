@@ -7,6 +7,11 @@
 				{{item}}
 		</span>
 	</div>
+	<style type="text/css">
+	.disable{ 
+		background-color: #c3b7b7 !important;
+	}
+	</style>
 	<div class="f-card-holder">
 		<div class="row">
 			<div 
@@ -26,7 +31,7 @@
 								<div class="text-center"><span>{{item.startIn}}</span></div>
 							</div>
 							<div class="text-center" ng-class="item.status == 'COMPLETED && !item.isActive' ? 'completed': 'margin-top-10'">
-								<span class="info-pill" ng-if="item.isActive" ng-click="contestList.getDetails(item)">
+								<span class="info-pill" ng-class=" item.isActive != true ? 'disable':''" ng-click="contestList.getDetails(item)">
 									{{ (item.attempted) ? 'Completed' : 'Start'}}
 								</span>
 							</div>

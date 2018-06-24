@@ -11,7 +11,7 @@
     .controller('LoginCtrl', ['$scope', '$state', 'CommonService', 'LoginService',
         function($scope, $state, CommonService, LoginService) {
         $scope.login = {};
-
+        $scope.user
         function init(){
         	$scope.login.username = '';
         	$scope.login.password = '';
