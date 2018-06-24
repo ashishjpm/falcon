@@ -103,7 +103,13 @@
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Qualifications</div>
-				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.qualifications}}</div>
+				<div class="col-md-10 value">
+					<div ng-repeat="qualification in candidateDetail.data.naukriProfileDto.qualifications">
+						<div ng-repeat="(key,value) in qualification">
+							<span class="text-capitalize padding-right-10">{{key}}:</span>{{value}}
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Work Experiences</div>
@@ -141,7 +147,14 @@
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Repos By Language</div>
-				<div class="col-md-10 value">{{candidateDetail.data.githubUserDetails.reposByLanguage}}</div>
+				<div class="col-md-10 value">
+					<span ng-repeat="(key, value) in candidateDetail.data.githubUserDetails.reposByLanguage">
+						<span class="f-pill-value">
+							{{key}}
+							<span class="pill-value">{{value}}</span>
+						</span>
+					</span>
+				</div>
 			</div>
 		</div>
 		<div ng-show="candidateDetail.typeSelected == 'Linkedin'">
@@ -163,11 +176,17 @@
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Qualifications</div>
-				<div class="col-md-10 value">{{candidateDetail.data.linkedInProfileResponse.qualifications}}</div>
+				<div class="col-md-10 value">
+					{{candidateDetail.data.linkedInProfileResponse.qualifications}}
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-2 key">Skill Endorsement</div>
-				<div class="col-md-10 value">{{candidateDetail.data.linkedInProfileResponse.skillsAndEndorsement}}</div>
+				<div class="col-md-10 value">
+					<div ng-repeat="(key,value) in candidateDetail.data.linkedInProfileResponse.skillsAndEndorsement">
+						<span class="text-capitalize padding-right-10">{{key}}:</span>{{value}}
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="pull-right row margin-top-25">
