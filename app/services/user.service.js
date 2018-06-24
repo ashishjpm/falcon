@@ -81,7 +81,7 @@
             })
         }
         
-        function finishContest(userId, contestId){
+        function finishContest(userId, candidateId, contestId){
             return $http({
                 url: AppConstant.api + 'contest/submit/',
                 method: 'POST',
@@ -93,7 +93,7 @@
             })
         }
         
-        function attemptContest(userId, contestId){
+        function attemptContest(userId, candidateId, contestId){
             return $http({
                 url: AppConstant.api + 'contest/attempt/',
                 method: 'POST',

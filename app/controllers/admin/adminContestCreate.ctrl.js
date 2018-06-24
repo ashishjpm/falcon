@@ -86,10 +86,11 @@
             function(response){
                 $scope.contestCreate.selectedQuestions = response.data.responseObject;
                 if($scope.contestCreate.selectedQuestions.length > 0){
-                    var questions = [];
+                    var questionDetails = [];
                     $scope.contestCreate.selectedQuestions.forEach(function(questions){
+                        console.log(questions);
                         questions.forEach(function(question){
-                            questions.push({
+                            questionDetails.push({
                                 "contestId": $scope.contestCreate.contestId,
                                 "negativePoints": question.negativePoints || 0,
                                 "points": question.marks || 2,
@@ -98,7 +99,7 @@
                             });
                         });
                     });
-                    AdminService.completeSecondStep($scope.contestCreate.contestId, questions).then(function(response){
+                    AdminService.completeSecondStep($scope.contestCreate.contestId, questionDetails).then(function(response){
                         $scope.contestCreate.currentState += 1;
                     });
                 }

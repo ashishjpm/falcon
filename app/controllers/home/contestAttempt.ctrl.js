@@ -87,7 +87,7 @@
     	}
 
         $scope.contestAttempt.finishTest=function(){
-            UserService.finishContest(localStorage.getItem('userId'),localStorage.getItem('contestId')).then(
+            UserService.finishContest(localStorage.getItem('userId'), localStorage.getItem('candidateId'), localStorage.getItem('contestId')).then(
                 function(response){},
                 function(err){console.log(err);}
             );
