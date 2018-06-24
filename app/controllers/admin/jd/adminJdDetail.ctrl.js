@@ -31,6 +31,9 @@
 
     $scope.gotoCandidateList = function() {
       $state.go('admin.candidateList',{"id": $stateParams.id})
+    }    
+    $scope.gotoSelectedCandidateList = function() {
+      $state.go('admin.selectedCandidates',{"id": $stateParams.id})
     }
 
     $scope.adminJdDetail.backToList = function() {

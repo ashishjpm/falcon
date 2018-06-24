@@ -33,6 +33,22 @@
             }
         );
     }
+    $scope.selectedCandidate.reject = function(candidateId) {
+        $scope.selectedCandidate.loader = true;
+        AdminService.rejectCandidate($stateParams.id, candidateId).then(
+            function(response){
+                getSelectedCandidateList();
+            }, function(err){});
+    }
+    $scope.selectedCandidate.action = function(candidateId, actionName) {
+        AdminService.candidateAction($stateParams.id, candidateId, actionName).then(
+            function(response){
+                getSelectedCandidateList();
+            }, function(err){});
+    }
+    $scope.selectedCandidate.detail = function(id) {
+        $state.go('admin.candidateDetail',{"id": id});
+    }
 
     init();
 

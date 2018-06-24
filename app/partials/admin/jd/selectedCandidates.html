@@ -1,20 +1,25 @@
 <div class="admin-selected-candidate" ng-show="!selectedCandidate.loader">
 		<div class="page-head row">
 		<i ng-click="selectedCandidate.backToList()" class="material-icons">arrow_back</i>
-		<span class="page-title">Matched Candidate</span>
+		<span class="page-title">Selected Candidate</span>
 	</div>
-	<div class="selected-candidate-list">
+	<div class="candidate-list">
 
 		<div class="list-header clearfix">
 			<div class="col-md-4">Name</div>
-			<div class="col-md-3">Current Package</div>
+			<div class="col-md-2">State</div>
 			<div class="col-md-3">Notice Period</div>
+			<div class="col-md-3">Actions</div>
 		</div>	
 
-		<div class="f-card-list" ng-repeat="item in selectedCandidate.list">
+		<div class="f-card-list" ng-repeat="item in selectedCandidate.list" ng-click="selectedCandidate.detail(item.id)">
 			<div class="col-md-4">{{item.name}}</div>
-			<div class="col-md-3">{{item.currentPackage}}</div>
+			<div class="col-md-2">{{item.currentPackage}}</div>
 			<div class="col-md-3">{{item.noticePeriod}}</div>
+			<div class="col-md-3">
+				<button class="btn btn-grey md" ng-click="selectedCandidate.reminder(item); $event.stopPropagation();">Reminder</button>
+				<button class="btn btn-grey md" ng-click="selectedCandidate.reject(item.id); $event.stopPropagation();">Reject</button>
+			</div>
 		</div>
 	</div>
 	<div class="pull-right" ng-if="selectedCandidate.showSubmit">

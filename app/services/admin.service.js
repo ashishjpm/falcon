@@ -107,9 +107,37 @@
         }
         function submitSelectedCandidate(candidateIdList, id){
             return $http({
-                url: AppConstant.api_vishal + '/shortlist/selectCandidates/'+ id,
+                url: AppConstant.api_vishal + 'shortlist/selectCandidates/'+ id,
                 method: 'POST',
                 data : {'selectedIds': candidateIdList}
+            })
+        }
+        function getSelectedCandidateList(id) {
+            return $http({
+                url: AppConstant.api_vishal + 'shortlist/getSelectedCandidates/'+ id,
+                method: 'GET'
+            })
+        }
+        function rejectCandidate(jdId,candidateId) {
+            return $http({
+                url: AppConstant.api_vishal + 'shortlist/rejectCandidate?jdId='+ jdId + '&candidateId=' + candidateId,
+                method: 'GET',
+            })
+        }
+        function candidateAction(jdId,candidateId,action) {
+            return $http({
+                url: AppConstant.api_vishal + 'shortlist/action/'+ action,
+                method: 'POST',
+                data : {
+                    'jdId': jdId,
+                    'candidateId': candidateId
+                }
+            })
+        }
+        function getCandidateDetails(candidateId) {
+            return $http({
+                url: AppConstant.api_vishal + 'shortlist/getCandidate/'+ candidateId,
+                method: 'GET'
             })
         }
 
@@ -128,7 +156,11 @@
             createJdList: createJdList,
             getJdDetail: getJdDetail,
             getCandidateList: getCandidateList,
-            submitSelectedCandidate: submitSelectedCandidate
+            submitSelectedCandidate: submitSelectedCandidate,
+            getSelectedCandidateList: getSelectedCandidateList,
+            rejectCandidate: rejectCandidate,
+            candidateAction: candidateAction,
+            getCandidateDetails: getCandidateDetails
         };
     });
 }());

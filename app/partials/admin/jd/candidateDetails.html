@@ -1,0 +1,19 @@
+<div class="candidate-detail" ng-show="!candidateDetail.loader">
+	<div class="type-tabs">
+		<span
+			ng-class="['types', {'active' : (candidateDetail.typeSelected == item)}]"
+			ng-repeat="item in candidateDetail.type"
+			ng-click="candidateDetail.typeSelected = item">
+				{{item}}
+		</span>
+	</div>
+	{{candidateDetail.data}}
+</div>
+
+<div class="pageloader" ng-show="candidateDetail.loader">
+	<div class="spinner">
+	  <div class="cube1"></div>
+	  <div class="cube2"></div>
+	</div>
+	<div class="text-center">Loading...</div>
+</div>

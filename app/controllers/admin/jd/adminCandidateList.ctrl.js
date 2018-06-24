@@ -56,7 +56,9 @@
 
         })
     }
-
+    $scope.candidate.detail = function(id) {
+        $state.go('admin.candidateDetail',{"id": id});
+    }
     init();
 
   }]);

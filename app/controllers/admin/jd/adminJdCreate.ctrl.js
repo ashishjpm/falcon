@@ -30,11 +30,11 @@
     $scope.adminJdCreate.submit = function(){
       AdminService.createJdList($scope.adminJdCreate.data).then(
         function(response) {
-          // swal("Success!", "Job description has been created", "success");
+          swal("Success!", "Job description has been created", "success");
           $state.go('admin.jd');
         },
         function(err) {
-          // swal("Error!", "Please try again!", "error");
+          swal("Error!", "Please try again!", "error");
         }
       );
     }        

@@ -12,9 +12,9 @@
 			<div class="col-md-3">Notice Period</div>
 		</div>	
 
-		<div class="f-card-list" ng-repeat="item in candidate.list">
+		<div class="f-card-list" ng-repeat="item in candidate.list" ng-click="candidate.detail(item.id)">
 			<div class="col-md-1 text-center">
-				<div class="checkbox margin-0" ng-click="candidate.checkboxClick()">
+				<div class="checkbox margin-0" ng-click="candidate.checkboxClick(); $event.stopPropagation();">
 					<label>
 						<input type="checkbox" name="sample" ng-model="candidate.selected[$index]">
 					</label>

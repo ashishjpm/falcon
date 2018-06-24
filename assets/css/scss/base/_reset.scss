@@ -97,10 +97,10 @@
     &.xlg{
         width: 150px;
         line-height: 25px;
-        @include font-light(0,100);
+        @include font-light(-2,100);
     }
     &.xxlg{
-        width: 170px;
+        width: 180px;
         padding: 7px 0px;
         @include font-light(-2,100);
     }

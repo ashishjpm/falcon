@@ -72,3 +72,31 @@
     font-size: 12px;
   }
 }
+.admin-selected-candidate{
+  .row {
+    margin-top: 10px;
+    .key {
+      @include font-semibold(0,100);
+    }
+  }
+  .title {
+    @include font-bold(2,100);
+    margin-top: 25px;
+  }
+  width: 80%;
+  margin: 0 auto 0 auto;
+  .page-head{
+    border-bottom: 1px solid $dark-border;
+    padding-bottom: 15px;
+    i{
+    font-size: 28px;
+    position: relative;
+    top: 5px;
+    cursor: pointer;
+    }
+    .page-title{
+      font-size: 28px;
+      margin-left: 10px;
+    }
+  }
+}

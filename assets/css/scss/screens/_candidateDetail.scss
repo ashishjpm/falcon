@@ -1,0 +1,16 @@
+.candidate-detail{
+	.type-tabs{    
+		width: 80%;
+  	margin: 0 auto 0 auto;
+		.types{
+	    padding: 5px 10px;
+    	margin: 0 10px;
+    	color: $font-black;
+    	cursor: pointer;
+			&.active{
+				border-bottom: 2px solid $iv-red;
+				color: $iv-red;
+			}
+		}
+	}
+}
