@@ -1,7 +1,7 @@
 .admin-contest-details{
 	margin:0 auto;
-	width: 60%;
-	padding: 20px 0;
+	width: 80%;
+	padding-bottom: 20px;
 	.content{
 		float: left;
 		width: 70%;
@@ -18,7 +18,13 @@
 	}
 	.title{
 		margin-top: 10px;
+		h3 {
+    	margin-top: 0;
+		}
 	}
-
-
+	.description{
+    font-weight: 300;
+    font-size: 14px;
+    margin-top: 10px;
+	}
 }
