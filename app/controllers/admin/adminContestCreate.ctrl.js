@@ -71,11 +71,16 @@
     }
 
     $scope.fetchQuestions = function(){
-        $scope.contestCreate.fixedQueMeta.pop();
         var reqData = {
           "totalQuestions": 0,
-          "questionCriteriaDTOs": $scope.contestCreate.fixedQueMeta
+          "questionCriteriaDTOs": []
         }
+        $scope.contestCreate.fixedQueMeta.forEach(function(meta){
+            if(meta.categoryName != null){
+                reqData.totalQuestions += parseInt(meta.questionCount);
+                reqData.questionCriteriaDTOs.push(meta);
+            }
+        });
         AdminService.fetchSelectedQuestions(reqData).then(
             function(response){
                 $scope.contestCreate.selectedQuestions = response.data.responseObject;

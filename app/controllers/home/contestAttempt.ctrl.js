@@ -11,6 +11,7 @@
     .controller('ContestAttemptCtrl', ['$scope', '$state' ,'$timeout','CommonService', 'UserService',
     	function($scope, $state, $timeout, CommonService, UserService) {
         $scope.root.activeUser = window.localStorage.getItem('userId');
+        $scope.root.candidateUser = window.localStorage.getItem('candidateId');
         $scope.root.activeContestId = window.localStorage.getItem('contestId');
         $scope.contestAttempt = {};
 
@@ -108,11 +109,12 @@
 
         $scope.submitCode = function(){
             var userId = $scope.root.activeUser;
+            var candidateId : $scope.root.candidateUser;
             var code = myCodeMirror.getValue();
             var language = $scope.contestAttempt.language;
             var questionId = $scope.contestAttempt.currentQue.questionId;
             var contestId = $scope.contestAttempt.currentQue.contestId;
-            UserService.submitCode(userId, contestId, language, questionId, code).then(
+            UserService.submitCode(userId, candidateId, contestId, language, questionId, code).then(
                 function (response) {
                     console.log(response);
                 },
@@ -155,8 +157,8 @@
             });
             
             var reqBody = [{
-                "candidateId" : $scope.root.activeUser,
                 "userId" :  $scope.root.activeUser,
+                "candidateId" : $scope.root.candidateUser,
                 "contestId": $scope.root.activeContestId,
                 "answerGiven": options,
                 "questionId": $scope.contestAttempt.currentQue.questionId,

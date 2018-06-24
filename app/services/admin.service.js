@@ -150,7 +150,7 @@
 
         function fetchSelectedQuestions(data) {
             return $http({
-                url: AppConstant.api_void + 'question/getFixedQuestions',
+                url: AppConstant.api + 'question/getFixedQuestions',
                 method: 'POST',
                 data : data
             })
