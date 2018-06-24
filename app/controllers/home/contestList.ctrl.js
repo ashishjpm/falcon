@@ -59,7 +59,7 @@
             $scope.root.user.activeContest = item;
             $scope.root.user.activeContestId = $scope.root.user.activeContest.id;
             window.localStorage.setItem('contestId', $scope.root.user.activeContestId);
-            $state.go('home.contestDetail');
+            $state.go('home.contestDetail',{"userId": $scope.root.activeUser});
         }
       init();
     }]);

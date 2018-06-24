@@ -29,7 +29,7 @@ falcon
         })
     $stateProvider
         .state('home.contestDetail', {
-            url: '/contestDetail',
+            url: '/contestDetail/:userId',
             templateUrl: 'app/partials/home/contestDetail/contestDetail.html',
             controller: 'ContestDetailCtrl'
         })

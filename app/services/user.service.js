@@ -89,6 +89,12 @@
                 }
             })
         }
+        function takeTest(testId){
+            return $http({
+                url: AppConstant.api + 'falcon/take-test?testId=' + testId,
+                method: 'GET'
+            })
+        }
         return {
             getContestDetail: getContestDetail,
             getContestList: getContestList,
@@ -98,7 +104,8 @@
             submitCode:submitCode,
             getContestQuestions: getContestQuestions,
             submitOptions: submitOptions,
-            finishContest: finishContest
+            finishContest: finishContest,
+            takeTest: takeTest
         };
     });
 }());
