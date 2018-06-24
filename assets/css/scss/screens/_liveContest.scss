@@ -9,7 +9,7 @@
 		overflow-y: auto;
 		float: left;
 		.question-list{
-			padding: 20px 15px 15px 30px;
+			padding: 10px 15px 5px 30px;
 			cursor: pointer;
 		    overflow: hidden;
 		    text-overflow: ellipsis;
@@ -38,6 +38,7 @@
 			font-size: 20px;
 		}
 		.que-title{
+	    line-height: 35px;
 			margin: 30px;
 			font-size: 30px;
 			margin-right: 20%;
