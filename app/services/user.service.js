@@ -80,22 +80,38 @@
                 method: 'GET'
             })
         }
+        
         function finishContest(userId, contestId){
             return $http({
                 url: AppConstant.api + 'contest/submit/',
                 method: 'POST',
                 data: {
                     userId: userId,
-                    contestId: contestId
+                    contestId: contestId,
+                    candidateId : candidateId
                 }
             })
         }
+        
+        function attemptContest(userId, contestId){
+            return $http({
+                url: AppConstant.api + 'contest/attempt/',
+                method: 'POST',
+                data: {
+                    userId: userId,
+                    contestId: contestId,
+                    candidateId : candidateId
+                }
+            })
+        }    
+
         function takeTest(testId){
             return $http({
                 url: AppConstant.base + 'falcon/take-test?testId=' + testId,
                 method: 'GET'
             })
         }
+        
         return {
             getContestDetail: getContestDetail,
             getContestList: getContestList,

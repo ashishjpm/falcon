@@ -94,6 +94,13 @@
             $state.go('home.contestList');
         }
 
+        $scope.contestAttempt.attempt = function(){
+            UserService.attemptContest(localStorage.getItem('userId'), localStorage.getItem('candidateId'), localStorage.getItem('contestId')).then(
+                function(response){},
+                function(err){console.log(err);}
+            );
+        };
+
         $scope.testCode = function(){
             $scope.contestAttempt.loader = true;
             var code = myCodeMirror.getValue();
@@ -102,21 +109,27 @@
             $scope.contestAttempt.testCaseResults=[];
             UserService.testCode(language, questionId, code).then(function (response) {
                 $scope.contestAttempt.loader = false;
-
                 $scope.contestAttempt.testCaseResults = response.data.responseObject;
             },function(err){$scope.contestAttempt.loader = false;})
         };
 
         $scope.submitCode = function(){
             var userId = $scope.root.activeUser;
-            var candidateId : $scope.root.candidateUser;
+            var candidateId = $scope.root.candidateUser;
             var code = myCodeMirror.getValue();
             var language = $scope.contestAttempt.language;
             var questionId = $scope.contestAttempt.currentQue.questionId;
             var contestId = $scope.contestAttempt.currentQue.contestId;
+            $scope.contestAttempt.loader = true;
             UserService.submitCode(userId, candidateId, contestId, language, questionId, code).then(
                 function (response) {
-                    console.log(response);
+                    updateQuestionStatus($scope.contestAttempt.currentQue, 'attempted');
+                    if($scope.contestAttempt.queDetails.length > $scope.contestAttempt.currentIndex + 1){
+                        $scope.contestAttempt.currentIndex = $scope.contestAttempt.currentIndex + 1;
+                        $scope.contestAttempt.currentQue = $scope.contestAttempt.queDetails[$scope.contestAttempt.currentIndex];
+                        updateQuestionStatus($scope.contestAttempt.currentQue, 'inProgress');
+                    }
+                    $scope.contestAttempt.loader = false;
                 },
                 function(err){
                     $scope.contestAttempt.loader = false;
