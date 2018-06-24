@@ -13,6 +13,7 @@ falcon.run(function($state, $rootScope){
       	$.material.init();
       });
       window.scrollTo({top: 0});
+      window.onbeforeunload = function () {}
     });
     $rootScope.$state = $state;
 });

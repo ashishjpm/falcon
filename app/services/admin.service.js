@@ -48,6 +48,13 @@
             })
         }
 
+        function activateContest(contestId) {
+            return $http({
+                url: AppConstant.api + 'contest/'+ contestId + '/status/active',
+                method : 'GET'
+            })
+        }
+
         function getCategories(){
             return $http({
                 url: AppConstant.api + 'question/getCategories',
@@ -147,6 +154,7 @@
             completeSecondStep:addQuestionToContestTemplate,
             fetchContestQuestions : fetchContestQuestions,
             saveContestConfigration:saveConfiguration,
+            activateContest: activateContest,
             getCategories : getCategories,
             getAllQuestions: getAllQuestions,
             createQuestion: createQuestion,
