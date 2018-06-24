@@ -26,6 +26,7 @@
         }
 
         function addQuestionToContestTemplate(contest, questions){
+            console.log("questions", questions);
             return $http({
                 url: AppConstant.api + 'contest/'+contest+'/add-questions',
                 method : 'POST',

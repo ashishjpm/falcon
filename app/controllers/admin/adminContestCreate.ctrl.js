@@ -81,19 +81,21 @@
                 reqData.questionCriteriaDTOs.push(meta);
             }
         });
+        
         AdminService.fetchSelectedQuestions(reqData).then(
             function(response){
                 $scope.contestCreate.selectedQuestions = response.data.responseObject;
                 if($scope.contestCreate.selectedQuestions.length > 0){
                     var questions = [];
-                    $scope.contestCreate.selectedQuestions.forEach(function(question){
-                        question.contestId = $scope.contestCreate.contestId;
-                        questions.push({
-                            "contestId": $scope.contestCreate.contestId,
-                            "negativePoints": question.negativePoints || 0,
-                            "points": question.marks || 2,
-                            "questionId": question.questionId,
-                            "questionTitle": question.title
+                    $scope.contestCreate.selectedQuestions.forEach(function(questions){
+                        questions.forEach(function(question){
+                            questions.push({
+                                "contestId": $scope.contestCreate.contestId,
+                                "negativePoints": question.negativePoints || 0,
+                                "points": question.marks || 2,
+                                "questionId": question.questionId,
+                                "questionTitle": question.title
+                            });
                         });
                     });
                     AdminService.completeSecondStep($scope.contestCreate.contestId, questions).then(function(response){
