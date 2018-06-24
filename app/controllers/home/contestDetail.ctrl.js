@@ -12,6 +12,10 @@
     	function($scope, $state ,CommonService, UserService, $stateParams) {
         $scope.root.user.activeContestId = window.localStorage.getItem('contestId');
         $scope.contestDetail = {};
+        $scope.contestDetail.isAttempted = window.localStorage.getItem('contestAttempted-'+$scope.root.user.activeContestId);
+        console.log('attemptContest ', $scope.contestDetail.isAttempted);
+        console.log('attemptContest id', $scope.root.user.activeContestId);
+
         var isfalconUser = true;
 
     	function init(){

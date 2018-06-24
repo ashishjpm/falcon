@@ -41,12 +41,15 @@
                         $scope.contestList.list.push({
                             id : contest.id,
                             name : contest.name,
+                            attempted : contest.attempted != undefined && contest.attempted != false,
                             status : $scope.contestList.type[Math.floor(Math.random() * 4)],
                             description : contest.description.substring(0,40) + "...",
-                            isActive : now.getTime() > contest.startDate,
+                            shouldDisplay : contest.status != 'DRAFT',
+                            isActive : contest.endDate > now.getTime() && contest.startDate < now.getTime(),
                             startIn: covertTimeToString(contest.startDate - now.getTime()),
                             endsIn : covertTimeToString(contest.endDate - now.getTime())
                         });
+                        window.localStorage.setItem('contestAttempted-'+contest.id, contest.attempted != undefined && contest.attempted != false);
                     });
                 },
                 function(err){
@@ -59,6 +62,7 @@
             $scope.root.user.activeContest = item;
             $scope.root.user.activeContestId = $scope.root.user.activeContest.id;
             window.localStorage.setItem('contestId', $scope.root.user.activeContestId);
+            window.localStorage.setItem('contestName', $scope.root.user.activeContest.name);
             $state.go('home.contestDetail',{"userId": $scope.root.activeUser});
         }
       init();

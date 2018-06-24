@@ -12,7 +12,7 @@
 			<div 
 				class="col-md-4" 
 				ng-repeat="item in contestList.list"
-				ng-if="contestList.typeSelected == 'All' || contestList.typeSelected == item.status">
+				ng-if="(contestList.typeSelected == 'All' || contestList.typeSelected == item.status) && item.shouldDisplay">
 					<div class="f-card">
 						<div class="cart-title">{{item.name}}</div>
 						<div>
@@ -26,7 +26,9 @@
 								<div class="text-center"><span>{{item.startIn}}</span></div>
 							</div>
 							<div class="text-center" ng-class="item.status == 'COMPLETED && !item.isActive' ? 'completed': 'margin-top-10'">
-								<span class="info-pill" ng-if="item.isActive" ng-click="contestList.getDetails(item)">Start</span>
+								<span class="info-pill" ng-if="item.isActive" ng-click="contestList.getDetails(item)">
+									{{ (item.attempted) ? 'Completed' : 'Start'}}
+								</span>
 							</div>
 						</div>
 					</div>
