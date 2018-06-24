@@ -42,9 +42,10 @@
 
         $scope.contestCreate.fixedQueMeta = [
             {
-                category: null,
-                level: "",
-                number: "",
+                categoryName: null,
+                difficultyLevel: "",
+                type: "",
+                questionCount: ""
             }
         ];
 
@@ -70,9 +71,14 @@
     }
 
     $scope.fetchQuestions = function(){
-        AdminService.fetchContestQuestions().then(function(response){
+        $scope.contestCreate.fixedQueMeta.pop();
+        var reqData = {
+          "totalQuestions": 0,
+          "questionCriteriaDTOs": $scope.contestCreate.fixedQueMeta
+        }
+        AdminService.fetchSelectedQuestions(reqData).then(
+            function(response){
                 $scope.contestCreate.selectedQuestions = response.data.responseObject;
-                console.log($scope.contestCreate.selectedQuestions);
                 if($scope.contestCreate.selectedQuestions.length > 0){
                     var questions = [];
                     $scope.contestCreate.selectedQuestions.forEach(function(question){
@@ -80,13 +86,12 @@
                         questions.push({
                             "contestId": $scope.contestCreate.contestId,
                             "negativePoints": question.negativePoints || 0,
-                            "points": question.marks || 1,
+                            "points": question.marks || 2,
                             "questionId": question.questionId,
                             "questionTitle": question.title
                         });
                     });
                     AdminService.completeSecondStep($scope.contestCreate.contestId, questions).then(function(response){
-                        console.log(response);
                         $scope.contestCreate.currentState += 1;
                     });
                 }
@@ -110,7 +115,7 @@
     $scope.fetchCategories = function(){
         AdminService.getCategories().then(
             function(response){
-                $scope.contestCreate.categoryList = response.data.responseObject;
+                $scope.contestCreate.categoryList = response.data.responseObject.map(function(item){return item.name});
             },
             function(err){
 
@@ -131,9 +136,10 @@
 
     $scope.addCategory = function(){
         $scope.contestCreate.fixedQueMeta.push({
-            category: null,
-            level: "",
-            number: "",
+            categoryName: null,
+            difficultyLevel: "",
+            type: "",
+            questionCount: ""
         });
     }
 
