@@ -136,7 +136,7 @@
         }
         function getCandidateDetails(candidateId) {
             return $http({
-                url: AppConstant.api_vishal + 'shortlist/getCandidate/'+ candidateId,
+                url: AppConstant.api_vishal + 'profile/getCandidateProfile?candidateId='+ candidateId,
                 method: 'GET'
             })
         }

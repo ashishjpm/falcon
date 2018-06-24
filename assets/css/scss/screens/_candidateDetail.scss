@@ -16,5 +16,20 @@
 	.content {
 		width: 80%;
 	  margin: 0 auto 0 auto;
+	  padding: 40px 10px;
+	  .row {
+	  	margin-top: 5px;
+	  }
+	  .key {
+	    font-weight: 400;
+	    @include font-normal(-2,100);
+	  }
+	  .value {
+	  	font-size: 14px;
+	    font-weight: 300;
+	  }
+	  .naukri {
+
+	  }
 	}
 }
