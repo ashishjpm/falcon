@@ -18,7 +18,7 @@
             $scope.root.userSelected = "Contest Details";
             $scope.contestDetail.title = "this is title";
             $scope.contestDetail.details = [];
-            isfalconUser = !getParameterByName('squad_user', window.location.href) || true;
+            isfalconUser = !getParameterByName('squad_user', window.location.href);
             getContestDetail();
     	}
 
