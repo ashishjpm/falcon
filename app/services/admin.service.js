@@ -148,6 +148,14 @@
             })
         }
 
+        function fetchSelectedQuestions(data) {
+            return $http({
+                url: AppConstant.api_vishal + 'question/getFixedQuestions',
+                method: 'POST',
+                data : data
+            })
+        }
+
         return {
             getContestList: getContestList,
             completeFirstStep: createContest,
@@ -168,7 +176,8 @@
             getSelectedCandidateList: getSelectedCandidateList,
             rejectCandidate: rejectCandidate,
             candidateAction: candidateAction,
-            getCandidateDetails: getCandidateDetails
+            getCandidateDetails: getCandidateDetails,
+            fetchSelectedQuestions: fetchSelectedQuestions
         };
     });
 }());

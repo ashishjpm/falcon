@@ -33,8 +33,7 @@
     
         if('end' == state && end > now && start < end){
             timeInMilliSeconds = end - now;
-        }
-        console.log("diff" , timeInMilliSeconds);         
+        }      
         if(timeInMilliSeconds > 0){
             var minutesInMilli =  60000;
             var hoursInMilli = minutesInMilli * 60;
@@ -48,9 +47,6 @@
 
             var elapsedMinutes = timeInMilliSeconds // minutesInMilli;
             timeInMilliSeconds = timeInMilliSeconds % minutesInMilli;
-
-
-            console.log("days ", elapsedDays);
 
             return padding(2, parseInt(elapsedDays)) + " : " 
             + padding(2, parseInt(elapsedHours)) + " : " 

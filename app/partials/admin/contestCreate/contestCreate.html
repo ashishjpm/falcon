@@ -103,19 +103,32 @@
 	<form action="" ng-if="contestCreate.currentState == 2">
 		<div class="row" ng-repeat="item in contestCreate.fixedQueMeta track by $index">
 			<div class="col-md-3">
-				<select name="" id="" ng-model="item.category" ng-options="category.name for category in contestCreate.categoryList" class="f-select full">
+				<select ng-model="item.categoryName" class="f-select full">
 					<option value="" disabled selected>-- Choose Category --</option>
+					<option value={{category}}" ng-repeat="category in contestCreate.categoryList">
+						{{category}}
+					</option>
 				</select>
 			</div>
-			<div class="col-md-3">
-				<select name="" id="" ng-model="item.level" class="f-select full">
+			<div class="col-md-2">
+				<select ng-model="item.difficultyLevel" class="f-select full">
 					<option value="" disabled selected>-- Choose Question --</option>
-					<option value="easy">easy</option>
-					<option value="medium">medium</option>
+					<option value="BASIC">Basic</option>
+					<option value="NORMAL">Normal</option>
+					<option value="ADVANCED">Advance</option>
+					<option value="INSANE">Insane</option>
 				</select>
 			</div>
-			<div class="col-md-3"><input ng-model="item.number" type="text" placeholder="Input Question Count" class="f-input md full"></div>
-			<div class="col-md-3 ">
+			<div class="col-md-2">
+				<select name="" id="" ng-model="item.type" class="f-select full">
+					<option value="" disabled selected>-- Choose Question --</option>
+					<option value="MULTIPLE_CORRECT">Multiple Correct</option>
+					<option value="SINGLE_CORRECT">Single Correct</option>
+					<option value="CODING">Coding</option>
+				</select>
+			</div>
+			<div class="col-md-3"><input ng-model="item.questionCount" type="text" placeholder="Input Question Count" class="f-input md full"></div>
+			<div class="col-md-1 ">
 				<i class="material-icons" ng-if="$index == contestCreate.fixedQueMeta.length -1" ng-click="addCategory()">add_circle</i>
 				<i class="material-icons" ng-if="$index != contestCreate.fixedQueMeta.length -1" ng-click="removeCategory($index)">close</i>
 			</div>
@@ -155,7 +168,7 @@
 			</div>
 		</div>
 	</form>
-	<div class="pull-right">
+	<div class="pull-right margin-top-25">
 		<button
 			class="falcon-btn btn btn-iv-red xlg round" ng-click="submit()">
 			{{contestCreate.currentState == 3 ? 'Save' : 'Next'}}
