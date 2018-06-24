@@ -8,8 +8,8 @@
 ;
 (function() {
  falcon
-    .controller('ContestAttemptCtrl', ['$scope', '$state' ,'$timeout','CommonService', 'UserService','$stateParams'
-    	function($scope, $state, $timeout, CommonService, UserService, $stateParams) {
+    .controller('ContestAttemptCtrl', ['$scope', '$state' ,'$timeout','CommonService', 'UserService',
+    	function($scope, $state, $timeout, CommonService, UserService) {
         $scope.root.activeUser = window.localStorage.getItem('userId');
         $scope.root.activeContestId = window.localStorage.getItem('contestId');
         $scope.contestAttempt = {};
