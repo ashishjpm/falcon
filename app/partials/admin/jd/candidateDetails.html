@@ -7,7 +7,12 @@
 				{{item}}
 		</span>
 	</div>
-	{{candidateDetail.data}}
+	<div class="content">
+		{{candidateDetail.data}}
+		<div class="pull-right row margin-top-25">
+			<button class="btn btn-iv-red xxlg" ui-sref="admin.jd">Back to home</button>
+		</div>
+	</div>
 </div>
 
 <div class="pageloader" ng-show="candidateDetail.loader">

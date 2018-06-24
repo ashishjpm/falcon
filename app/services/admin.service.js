@@ -126,7 +126,7 @@
         }
         function candidateAction(jdId,candidateId,action) {
             return $http({
-                url: AppConstant.api_vishal + 'shortlist/action/'+ action,
+                url: AppConstant.api_vishal + 'action/'+ action,
                 method: 'POST',
                 data : {
                     'jdId': jdId,

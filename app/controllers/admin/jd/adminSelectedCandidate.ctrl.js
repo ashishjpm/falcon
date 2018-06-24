@@ -18,6 +18,16 @@
         $scope.selectedCandidate.list = [];
         $scope.selectedCandidate.loader = true;
         getSelectedCandidateList();
+        $scope.selectedCandidate.stageMap = {
+            "TEST_SENT": "Test Sent",
+            "INTERVIEW": "Interview",
+            "INIT": "No action taken",
+            "EVALUATION": "Evaluation"
+        }
+        $scope.selectedCandidate.statusMap = {
+            "INVITED": "Invited",
+            "PARTICIPATED": "Patticipated"
+        }
     }
     $scope.selectedCandidate.backToList = function() {
         $state.go('admin.jdDetail', {"id": $stateParams.id});
@@ -41,6 +51,7 @@
             }, function(err){});
     }
     $scope.selectedCandidate.action = function(candidateId, actionName) {
+        $scope.selectedCandidate.loader = true;
         AdminService.candidateAction($stateParams.id, candidateId, actionName).then(
             function(response){
                 getSelectedCandidateList();
