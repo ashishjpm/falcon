@@ -19,7 +19,7 @@
         $scope.candidateDetail.type = ['Naukri', 'Github', 'Linkedin'];
         $scope.candidateDetail.typeSelected = 'Naukri';
         $scope.candidateDetail.data = [];
-        $scope.candidateDetail.loader = false;
+        $scope.candidateDetail.loader = true;
         getCandidateDetails();
     }
     function getCandidateDetails() {
