@@ -59,6 +59,8 @@
     $scope.createContest = function(){
         $scope.contestCreate.stepOne.startDate = new Date($scope.contestCreate.stepOne.startDate).toISOString();
         $scope.contestCreate.stepOne.endDate = new Date($scope.contestCreate.stepOne.endDate).toISOString();
+        $scope.contestCreate.stepOne.inviteeDTOs = [];
+        $scope.contestCreate.stepOne.contestQuestionDTOs = [];
         AdminService.completeFirstStep($scope.contestCreate.stepOne).then(
         function(response){
             $scope.contestCreate.currentState += 1;

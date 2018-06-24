@@ -7,7 +7,7 @@
 				{{item}}
 		</span>
 		<span class="pull-right padding-right-30">
-			<div class="togglebutton">
+			<div class="togglebutton success">
 				<label>
 					<span class="padding-right-10">Show Detail</span>
 		    	<input type="checkbox" ng-model="candidateDetail.showDetail">
@@ -25,11 +25,11 @@
 				<div class="col-md-2 key">Gender</div>
 				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.gender}}</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-show="candidateDetail.showDetail">
 				<div class="col-md-2 key">Email</div>
 				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.email}}</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-show="candidateDetail.showDetail">
 				<div class="col-md-2 key">User Name</div>
 				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.user}}</div>
 			</div>
@@ -41,7 +41,7 @@
 				<div class="col-md-2 key">Job Summary</div>
 				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.jobSummary}}</div>
 			</div>
-			<div class="row">
+			<div class="row" ng-show="candidateDetail.showDetail">
 				<div class="col-md-2 key">Current Package</div>
 				<div class="col-md-10 value">{{candidateDetail.data.naukriProfileDto.currentPackage}}</div>
 			</div>

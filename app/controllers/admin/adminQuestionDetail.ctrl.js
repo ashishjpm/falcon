@@ -14,7 +14,7 @@
         $scope.adminQuestion = {};
 
         function init(){
-            $scope.root.admin.showAddBtn = true;
+            $scope.root.admin.showAddBtn = false;
             $scope.root.adminSelected = "Question Details";
             $scope.questionTypes = {"All":"All","SINGLE_CORRECT":"Single Choice Question","MULTIPLE_CORRECT":'Multiple Choice Question','CODING':'Programming Question'};
             getQuestionDetails();           
