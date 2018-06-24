@@ -51,13 +51,14 @@
             }
             else {
                 var details = $stateParams.userId;
-                console.log('contestId', $stateParams.userId);
                 UserService.takeTest($stateParams.userId).then(
                     function(response){
                         $scope.contestDetail.details = response.data.responseObject;
                         $scope.contestDetail.details.startDate = CommonService.tsToDateString($scope.contestDetail.details.startDate);
                         $scope.contestDetail.details.endDate = CommonService.tsToDateString($scope.contestDetail.details.endDate);
                         window.localStorage.setItem('candidateId', $scope.contestDetail.details.inviteeDTOs[0].candidateId);
+                        window.localStorage.setItem('contestId', $scope.contestDetail.details.id);
+                        $scope.contestDetail.isAttempted = $scope.contestDetail.details.attempted;
                     },
                     function(err){
                         console.log(err);

@@ -62,6 +62,7 @@
         }
 
         $scope.contestAttempt.updateQue = function(question, index){
+            console.log(question);
             $scope.contestAttempt.currentQue = question;
             $scope.contestAttempt.currentIndex = index;
             $timeout(function() {
