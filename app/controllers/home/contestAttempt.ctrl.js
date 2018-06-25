@@ -25,7 +25,6 @@
             	'attempted' : false,
             	'unAttempted' : true
             }
-            $scope.contestAttempt.langData = [];
             $scope.contestAttempt.currentQue = {};
             getLang();
             getQueDetails();
@@ -40,6 +39,7 @@
             UserService.getLanguage().then(
                 function(response){
                     $scope.contestAttempt.langData = response.data.responseObject;
+                    $scope.contestAttempt.language = response.data.responseObject[33].id.toString();
                 },
                 function(err){console.log(err);}
             );
