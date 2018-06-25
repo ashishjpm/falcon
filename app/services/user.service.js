@@ -122,7 +122,8 @@
             getContestQuestions: getContestQuestions,
             submitOptions: submitOptions,
             finishContest: finishContest,
-            takeTest: takeTest
+            takeTest: takeTest,
+            attemptContest : attemptContest
         };
     });
 }());

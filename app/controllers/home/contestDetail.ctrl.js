@@ -72,11 +72,7 @@
         }
 
         $scope.attemptContest = function(){
-            UserService.attemptContest($stateParams.userId, window.localStorage.getItem('candidateId') window.localStorage.getItem('contestId').then(function(response){
-                $state.go('home.contestAttempt');
-            }, function(error){
-
-            });
+            $state.go('home.contestAttempt');
         }
         init();
     }]);
