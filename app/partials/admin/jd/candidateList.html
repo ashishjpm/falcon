@@ -7,9 +7,10 @@
 
 		<div class="list-header clearfix">
 			<div class="col-md-1"></div>
-			<div class="col-md-4">Name</div>
+			<div class="col-md-3">Name</div>
 			<div class="col-md-3">Current Package</div>
 			<div class="col-md-3">Notice Period</div>
+			<div class="col-md-2">Matching Score</div>
 		</div>	
 
 		<div class="f-card-list" ng-repeat="item in candidate.list" ng-click="candidate.detail(item.id)">
@@ -20,9 +21,10 @@
 					</label>
 				</div>
 			</div>
-			<div class="col-md-4">{{item.name}}</div>
+			<div class="col-md-3">{{item.name}}</div>
 			<div class="col-md-3">{{item.currentPackage}}</div>
 			<div class="col-md-3">{{item.noticePeriod}}</div>
+			<div class="col-md-2">{{item.score}}</div>
 		</div>
 	</div>
 	<div class="pull-right" ng-if="candidate.showSubmit">

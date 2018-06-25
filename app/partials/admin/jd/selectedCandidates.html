@@ -6,16 +6,19 @@
 	<div class="candidate-list">
 
 		<div class="list-header clearfix">
-			<div class="col-md-4">Name</div>
+			<div class="col-md-3">Name</div>
 			<div class="col-md-2">Stage</div>
-			<div class="col-md-3">Status</div>
+			<div class="col-md-2">Status</div>
+			<div class="col-md-2">Score</div>
 			<div class="col-md-3">Actions</div>
 		</div>	
 
 		<div class="f-card-list" ng-repeat="item in selectedCandidate.list" ng-click="selectedCandidate.detail(item.id)">
-			<div class="col-md-4">{{item.name}}</div>
+			<div class="col-md-3">{{item.name}}</div>
 			<div class="col-md-2 font-14">{{selectedCandidate.stageMap[item.stage]}}</div>
-			<div class="col-md-3 font-14">{{selectedCandidate.statusMap[item.status]}}</div>
+			<div class="col-md-2 font-14">{{selectedCandidate.statusMap[item.status]}}</div>
+			<div class="col-md-2 font-14" ng-if="item.stage == 'EVALUATION'">{{item.scoredMarks}} / {{item.totalMarks}}</div>
+			<div class="col-md-2 font-14" ng-if="item.stage != 'EVALUATION'"> - </div>
 			<div class="col-md-3">
 				<button ng-show="item.stage == 'TEST_SENT'" class="btn btn-grey md" ng-click="selectedCandidate.action(item.id, 'REMINDER'); $event.stopPropagation();">Reminder</button>
 				<button ng-show="item.stage == 'EVALUATION'" class="btn btn-grey md" ng-click="selectedCandidate.action(item.id, 'CALL'); $event.stopPropagation();">Call</button>
